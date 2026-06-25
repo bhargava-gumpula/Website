@@ -64,7 +64,7 @@ export const homeContent = {
   projectsSection: {
     eyebrow: "Featured Projects",
     title: "Proof through real project work",
-    description: "These projects demonstrate practical coding and problem solving."
+    description: "These projects demonstrate practical coding and problem-solving."
   },
   classesSection: {
     eyebrow: "Classes",
@@ -82,11 +82,11 @@ export const aboutContent = {
   eyebrow: "About",
   title: "Computer science builder, cubing competitor, and instructor",
   description:
-    "I combine technical problem solving, USACO experience, competitive cubing, and practical teaching to help learners grow with confidence.",
+    "I combine technical problem-solving, USACO experience, competitive cubing, and practical teaching to help learners grow with confidence.",
   bioParagraphs: [
-    "I am Bhargava Gumpula, a computer science learner and builder who enjoys creating real, useful project, My strongest languages are Python, C, and C++. I am well versed in data structures and algorithms, and I also work with SQL, HTML, CSS, Javascript, and Flask.",
+    "I am Bhargava Gumpula, a computer science learner and builder who enjoys creating real, useful projects. My strongest languages are Python, C, and C++. I am well-versed in data structures and algorithms, and I also work with SQL, HTML, CSS, JavaScript, and Flask.",
     "In cubing, I actively compete and continue improving through regular practice and events. My fastest 3x3 solve is 7.8 seconds, and my average is around 11 seconds. I also solve many puzzle types beyond 3x3, including 2x2, 4x4, 5x5, Pyraminx, Skewb, Megaminx, and more.",
-    "I completed Harvard CS50x and CS50P, along with a Codio C++ certification. Through this platform, I share projects, teach Rubik's Cube and programming classes, and build a long-term learning community."
+    "On this website, I share projects, teach Rubik's Cube and programming classes, and build a long-term learning community."
   ],
   profilePlaceholderText: "Profile image area. Replace with your personal photo when ready.",
   skillsTitle: "Skills and Focus Areas",
@@ -101,7 +101,8 @@ export const aboutContent = {
     "Flask",
     "USACO Bronze",
     "Competitive Cubing",
-    "Data Structures and Algorithms"
+    "Data Structures",
+    "Algorithms"
   ],
   achievementsTitle: "Achievements",
   achievements: [
@@ -117,13 +118,14 @@ export const aboutContent = {
 export const projectsPageContent = {
   eyebrow: "Projects",
   title: "Selected projects from CS50 work",
-  description: "Each project includes practical functionality and a demo link."
+  description: "Each project includes practical functionality and a demo video."
 };
 
 export const classesPageContent = {
   eyebrow: "Classes",
   title: "Rubik's Cubing and Python classes",
-  description: "Join free class tracks with private or group options. More technical tracks are coming soon.",
+  description: "Join class tracks with private or group options. More technical tracks are coming soon.",
+  datesNote: "Class dates will be released soon.",
   ctaTitle: "Ready to join a class?",
   ctaDescription: "Send your goals and preferred format. I will follow up with the next available slot.",
   ctaLabel: "Register Interest",
@@ -162,7 +164,7 @@ export const classes: ClassOffering[] = [
     level: "Beginner",
     status: "Open",
     summary:
-      "Private live or online coaching for levels from sub-90 to sub-20 goals. Free for now and tailored to current solve speed."
+      "Private live or online coaching for levels from sub-90 to sub-20 goals, tailored to current solve speed."
   },
   {
     title: "Rubik's Cubing (Group Class)",

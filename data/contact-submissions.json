@@ -1,18 +1,11 @@
 [
   {
-    "id": "836f7231-9b54-47cb-8e88-31eb99a8c941",
-    "submittedAt": "2026-06-21T05:59:32.571Z",
-    "name": "Form Test",
-    "email": "form@test.com",
-    "inquiryType": "General Question",
-    "message": "Testing persistence"
-  },
-  {
-    "id": "a9c1f867-bcf6-438c-8dcf-58646b83e387",
-    "submittedAt": "2026-06-21T06:01:33.424Z",
-    "name": "Bhargava",
+    "id": "337a69d5-eb03-4654-8d51-c38e4db2c755",
+    "submittedAt": "2026-06-25T00:06:40.611Z",
+    "name": "Bhargava Gumpula",
     "email": "bhargava.gumpula@gmail.com",
     "inquiryType": "Class Registration",
-    "message": "Yoo!"
+    "registeredClass": "Rubik's Cubing (1-on-1)",
+    "message": "Advanced Level, Sub 12"
   }
 ]

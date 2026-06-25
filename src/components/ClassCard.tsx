@@ -10,10 +10,10 @@ export function ClassCard({ classItem }: ClassCardProps) {
 
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className="flex items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold text-slate-900">{classItem.title}</h3>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="min-w-0 text-lg font-semibold text-slate-900">{classItem.title}</h3>
         <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${
+          className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${
             isComingSoon ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"
           }`}
         >
@@ -28,15 +28,20 @@ export function ClassCard({ classItem }: ClassCardProps) {
       </div>
       <div className="mt-5">
         {isComingSoon ? (
-          <span className="inline-block rounded-md border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-700">
-            Enrollment opens soon
-          </span>
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            className="inline-block cursor-not-allowed rounded-md border border-brand-600 px-3 py-1.5 text-xs font-semibold text-brand-600 saturate-0 opacity-50"
+          >
+            Register
+          </button>
         ) : (
           <Link
             href={`/contact?class=${encodeURIComponent(classItem.title)}`}
-            className="inline-block rounded-md bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand-700"
+            className="inline-block rounded-md border border-brand-600 px-3 py-1.5 text-xs font-semibold text-brand-600 transition hover:-translate-y-0.5 hover:bg-brand-50"
           >
-            Register Interest
+            Register
           </Link>
         )}
       </div>
