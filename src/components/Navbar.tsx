@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { externalLinks, siteIdentity } from "@/data/siteContent";
-import { GitHubIcon, LinkedInIcon, RubiksCubeIcon, YouTubeIcon } from "@/components/SocialIcons";
+import { GitHubIcon, LinkedInIcon, WcaLogoIcon, YouTubeIcon } from "@/components/SocialIcons";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -17,7 +17,7 @@ const socialLinks = [
   { href: externalLinks.github, label: "GitHub", Icon: GitHubIcon, hoverClass: "hover:border-slate-500" },
   { href: externalLinks.linkedin, label: "LinkedIn", Icon: LinkedInIcon, hoverClass: "hover:border-blue-500/70" },
   { href: externalLinks.youtube, label: "YouTube", Icon: YouTubeIcon, hoverClass: "hover:border-red-500/70" },
-  { href: externalLinks.wca, label: "WCA", Icon: RubiksCubeIcon, hoverClass: "hover:border-orange-500/70" }
+  { href: externalLinks.wca, label: "WCA", Icon: WcaLogoIcon, hoverClass: "hover:border-blue-500/70" }
 ];
 
 export function Navbar() {

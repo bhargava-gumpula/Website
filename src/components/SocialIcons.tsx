@@ -25,31 +25,11 @@ export function YouTubeIcon({ className }: IconProps) {
   );
 }
 
-const rubiksFace = [
-  ["#FFFFFF", "#FFD500", "#B71234"],
-  ["#009B48", "#0051BA", "#FFFFFF"],
-  ["#FF5800", "#FFFFFF", "#FFD500"]
-];
-
-export function RubiksCubeIcon({ className }: IconProps) {
+export function WcaLogoIcon({ className }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-      {rubiksFace.map((row, rowIndex) =>
-        row.map((fill, colIndex) => (
-          <rect
-            key={`${rowIndex}-${colIndex}`}
-            x={4 + colIndex * 5.5}
-            y={4 + rowIndex * 5.5}
-            width={5}
-            height={5}
-            rx={0.6}
-            fill={fill}
-            stroke="#0f172a"
-            strokeWidth={0.4}
-          />
-        ))
-      )}
-    </svg>
+    // Official WCA logo asset (same as worldcubeassociation.org header)
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/icons/wca-logo.svg" alt="" aria-hidden="true" className={className} />
   );
 }
 
