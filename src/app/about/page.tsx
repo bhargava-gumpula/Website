@@ -42,7 +42,32 @@ export default function AboutPage() {
           <h2 className="text-xl font-semibold text-slate-100">{aboutContent.achievementsTitle}</h2>
           <ul className="mt-4 list-inside list-disc space-y-2 text-slate-300">
             {aboutContent.achievements.map((achievement) => (
-              <li key={achievement}>{achievement}</li>
+              <li key={achievement.label}>
+                {achievement.certificateUrl ? (
+                  <a
+                    href={achievement.certificateUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 -ml-1.5 text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-50/40 hover:text-brand-700 hover:decoration-brand-400"
+                  >
+                    {achievement.label}
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 shrink-0 opacity-50 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M14 5h5v5M10 14 19 5M15 10v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h8" />
+                    </svg>
+                  </a>
+                ) : (
+                  achievement.label
+                )}
+              </li>
             ))}
           </ul>
         </article>

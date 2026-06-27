@@ -28,6 +28,11 @@ export type HomeStat = {
   suffix?: string;
 };
 
+export type Achievement = {
+  label: string;
+  certificateUrl?: string;
+};
+
 export const siteIdentity = {
   brandName: "Bhargava Gumpula",
   siteTitle: "Bhargava Gumpula | Portfolio and Classes",
@@ -36,6 +41,7 @@ export const siteIdentity = {
 
 export const externalLinks = {
   github: "https://github.com/bhargava-gumpula",
+  linkedin: "https://www.linkedin.com/in/bhargava-gumpula-5000b9300/",
   wca: "https://www.worldcubeassociation.org/persons/2019GUMP01",
   youtube: "https://www.youtube.com/@BhargavaGumpula"
 };
@@ -53,10 +59,10 @@ export const profileMetrics = {
 };
 
 export const homeContent = {
-  heroEyebrow: "Cubing + CS + Teaching",
+  heroEyebrow: "Cubing + Computer Science + Teaching",
   heroTitle: "Hi, I am Bhargava Gumpula.",
   heroDescription:
-    "I build CS projects, compete in cubing, and teach Rubik's Cube, Python, C, C++, Data Structures and Algorithms through practical and structured classes.",
+    "I build computer science projects, compete in cubing, and teach Rubik's Cube, Python, C, C++, Data Structures, and Algorithms through practical and structured classes.",
   primaryCtaLabel: "View Classes",
   primaryCtaHref: "/classes",
   secondaryCtaLabel: "See Projects",
@@ -69,7 +75,8 @@ export const homeContent = {
   classesSection: {
     eyebrow: "Classes",
     title: "Learning options you can join now",
-    description: "Choose 1-on-1 or group format depending on your goals."
+    description: "Choose 1-on-1 or group classes depending on your goals.",
+    scheduleNote: "Class schedule coming soon."
   },
   testimonialsSection: {
     eyebrow: "Testimonials",
@@ -106,13 +113,22 @@ export const aboutContent = {
   ],
   achievementsTitle: "Achievements",
   achievements: [
-    "Harvard CS50x: Introduction to Computer Science",
-    "Harvard CS50P: Introduction to Programming with Python",
-    "Codio C++ certification completed",
-    "USACO Bronze level participant",
-    "8+ cubing competitions and counting",
-    "Fastest 3x3 solve: 7.8 seconds"
-  ]
+    {
+      label: "Harvard CS50x: Introduction to Computer Science",
+      certificateUrl: "/certificates/cs50x-certificate.pdf"
+    },
+    {
+      label: "Harvard CS50P: Introduction to Programming with Python",
+      certificateUrl: "/certificates/cs50p-certificate.pdf"
+    },
+    {
+      label: "Codio C++ certification completed",
+      certificateUrl: "/certificates/codio-cpp-certificate.pdf"
+    },
+    { label: "USACO Bronze level participant" },
+    { label: "8+ cubing competitions and counting" },
+    { label: "Fastest 3x3 solve: 7.8 seconds" }
+  ] satisfies Achievement[]
 };
 
 export const projectsPageContent = {
@@ -125,7 +141,7 @@ export const classesPageContent = {
   eyebrow: "Classes",
   title: "Rubik's Cubing and Python classes",
   description: "Join class tracks with private or group options. More technical tracks are coming soon.",
-  datesNote: "Class dates will be released soon.",
+  datesNote: "Class schedule coming soon.",
   ctaTitle: "Ready to join a class?",
   ctaDescription: "Send your goals and preferred format. I will follow up with the next available slot.",
   ctaLabel: "Register Interest",
@@ -164,7 +180,7 @@ export const classes: ClassOffering[] = [
     level: "Beginner",
     status: "Open",
     summary:
-      "Private live or online coaching for levels from sub-90 to sub-20 goals, tailored to current solve speed."
+      "Private in-person coaching for levels from sub-90 seconds to sub-20 seconds goals, tailored to current solve speed."
   },
   {
     title: "Rubik's Cubing (Group Class)",
@@ -172,7 +188,8 @@ export const classes: ClassOffering[] = [
     format: "Group",
     level: "Beginner",
     status: "Open",
-    summary: "Group sessions with step-by-step progression: sub-90, sub-1-minute, sub-45, sub-30, and sub-20 tracks."
+    summary:
+      "In-person group sessions with step-by-step progression: sub-90 seconds, sub-60 seconds, sub-45 seconds, sub-30 seconds, and sub-20 seconds tracks."
   },
   {
     title: "Python Fundamentals (Group)",
@@ -180,7 +197,8 @@ export const classes: ClassOffering[] = [
     format: "Group",
     level: "Beginner",
     status: "Open",
-    summary: "Covers Python basics including variables, functions, classes, and practical coding foundations."
+    summary:
+      "In-person and online group class covering Python basics including variables, loops, functions, classes, and practical coding foundations."
   },
   {
     title: "Python Fundamentals (1-on-1)",
@@ -188,7 +206,8 @@ export const classes: ClassOffering[] = [
     format: "1-on-1",
     level: "Beginner",
     status: "Open",
-    summary: "Private Python mentoring for students who want individualized pacing and targeted support."
+    summary:
+      "Private in-person and online Python mentoring for students who want individualized pacing and targeted support."
   },
   {
     title: "Data Structures and Algorithms",

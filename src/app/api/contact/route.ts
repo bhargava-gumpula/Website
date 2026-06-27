@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { access, mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { classes } from "@/data/siteContent";
+import { sendContactNotification } from "@/lib/sendContactNotification";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -123,6 +124,18 @@ export async function POST(request: Request) {
     const existing = await loadSubmissions();
     existing.push(nextSubmission);
     await saveSubmissions(existing);
+
+    try {
+      await sendContactNotification({
+        name,
+        email,
+        inquiryType,
+        ...(inquiryType === "Class Registration" ? { registeredClass } : {}),
+        message
+      });
+    } catch (emailError) {
+      console.error("Failed to send contact notification email:", emailError);
+    }
 
     return NextResponse.json(
       {
