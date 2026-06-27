@@ -3,7 +3,8 @@
 Quick reference for running and maintaining this website on the Raspberry Pi with Cloudflare Tunnel.
 
 **Live site:** https://www.bhargava-gumpula.com  
-**Project path on Pi:** `~/Work/Website`
+**Project path on Pi:** `~/Work/Website`  
+**Pi SSH:** `bhargavagumpula@10.0.0.16` (same Wi‑Fi/LAN as Pi; use SSH keys)
 
 ---
 
@@ -197,4 +198,77 @@ Then on the Pi, run **After you push code changes** above.
 | Pi project | `~/Work/Website` |
 | Public URL | https://www.bhargava-gumpula.com |
 | Local site | http://127.0.0.1:3000 |
+| Pi SSH | `bhargavagumpula@10.0.0.16` |
 | GitHub repo | https://github.com/bhargava-gumpula/Website |
+
+Deploy over SSH from your Mac (SSH key auth; same network as Pi):
+
+```bash
+ssh bhargavagumpula@10.0.0.16 'cd ~/Work/Website && git pull && npm ci && npm run build:webpack && pm2 restart website'
+```
+
+Optional SSH shortcut — add to `~/.ssh/config` on your Mac:
+
+```text
+Host pi
+    HostName 10.0.0.16
+    User bhargavagumpula
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+Then: `ssh pi 'pm2 status'`
+
+---
+
+## Static IP for the Pi (recommended)
+
+The Pi IP can change after reboot (DHCP). A fixed IP makes SSH and admin easier.  
+**Note:** Your public website still works if the IP changes (Cloudflare Tunnel). Static IP is mainly for SSH/local access.
+
+### Option A — Router DHCP reservation (recommended)
+
+1. On the Pi, get MAC address:
+   ```bash
+   ip link show wlan0    # Wi‑Fi
+   ip link show eth0     # Ethernet
+   ```
+   Look for `link/ether xx:xx:xx:xx:xx:xx`
+
+2. Log into your router admin (often `http://10.0.0.1`).
+
+3. Find **DHCP reservation**, **Address reservation**, or **Static lease**.
+
+4. Reserve **`10.0.0.16`** (or your preferred address) for the Pi’s MAC address.
+
+5. Reboot the Pi and confirm:
+   ```bash
+   hostname -I
+   ```
+
+No Pi config file changes needed; the router always assigns the same IP.
+
+### Option B — Static IP on the Pi (`dhcpcd`)
+
+Use only if you cannot use router reservations. Replace interface name if needed (`wlan0` or `eth0`).
+
+```bash
+sudo nano /etc/dhcpcd.conf
+```
+
+Add at the end (adjust gateway/DNS if your router differs):
+
+```text
+interface wlan0
+static ip_address=10.0.0.16/24
+static routers=10.0.0.1
+static domain_name_servers=10.0.0.1 8.8.8.8
+```
+
+Apply:
+
+```bash
+sudo reboot
+hostname -I    # should show 10.0.0.16
+```
+
+**Warning:** Pick an IP outside your router’s DHCP pool, or reserve the same IP in the router to avoid conflicts.
