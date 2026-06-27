@@ -20,12 +20,12 @@ export default function ClassesPage() {
         ))}
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-slate-900">{classesPageContent.ctaTitle}</h2>
-        <p className="mt-2 max-w-2xl text-slate-600">{classesPageContent.ctaDescription}</p>
+      <section className="rounded-xl border border-slate-700 bg-slate-900 p-6 shadow-sm">
+        <h2 className="text-xl font-semibold text-slate-100">{classesPageContent.ctaTitle}</h2>
+        <p className="mt-2 max-w-2xl text-slate-400">{classesPageContent.ctaDescription}</p>
         <Link
           href={classesPageContent.ctaHref}
-          className="mt-4 inline-block rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand-700"
+          className="mt-4 inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-brand-400"
         >
           {classesPageContent.ctaLabel}
         </Link>

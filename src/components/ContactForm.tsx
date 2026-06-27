@@ -6,6 +6,9 @@ import { classes } from "@/data/siteContent";
 const inquiryTypes = ["Class Registration", "General Question"] as const;
 const openClasses = classes.filter((classItem) => classItem.status === "Open");
 
+const inputClassName =
+  "mt-1 w-full rounded-md border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none ring-brand-500 placeholder:text-slate-500 focus:ring-2";
+
 export function ContactForm() {
   const [inquiryType, setInquiryType] = useState<"Class Registration" | "General Question">("General Question");
   const [selectedClass, setSelectedClass] = useState("");
@@ -70,35 +73,25 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-slate-700 bg-slate-900 p-5 shadow-sm">
       <div className="grid gap-4 md:grid-cols-2">
-        <label className="text-sm font-medium text-slate-700">
+        <label className="text-sm font-medium text-slate-300">
           Name
-          <input
-            required
-            name="name"
-            type="text"
-            className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none ring-brand-500 focus:ring-2"
-          />
+          <input required name="name" type="text" className={inputClassName} />
         </label>
-        <label className="text-sm font-medium text-slate-700">
+        <label className="text-sm font-medium text-slate-300">
           Email
-          <input
-            required
-            name="email"
-            type="email"
-            className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none ring-brand-500 focus:ring-2"
-          />
+          <input required name="email" type="email" className={inputClassName} />
         </label>
       </div>
 
-      <label className="text-sm font-medium text-slate-700">
+      <label className="text-sm font-medium text-slate-300">
         Inquiry Type
         <select
           name="inquiryType"
           value={inquiryType}
           onChange={(event) => setInquiryType(event.target.value as "Class Registration" | "General Question")}
-          className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none ring-brand-500 focus:ring-2"
+          className={inputClassName}
         >
           {inquiryTypes.map((type) => (
             <option key={type} value={type}>
@@ -109,14 +102,14 @@ export function ContactForm() {
       </label>
 
       {isClassRegistration ? (
-        <label className="text-sm font-medium text-slate-700">
+        <label className="text-sm font-medium text-slate-300">
           Class
           <select
             required
             name="registeredClass"
             value={selectedClass}
             onChange={(event) => setSelectedClass(event.target.value)}
-            className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none ring-brand-500 focus:ring-2"
+            className={inputClassName}
           >
             <option value="" disabled>
               Select a class
@@ -130,7 +123,7 @@ export function ContactForm() {
         </label>
       ) : null}
 
-      <label className="text-sm font-medium text-slate-700">
+      <label className="text-sm font-medium text-slate-300">
         Message
         <textarea
           required
@@ -141,7 +134,7 @@ export function ContactForm() {
               ? "Share your experience level, preferred schedule, etc."
               : "How can I help?"
           }
-          className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none ring-brand-500 focus:ring-2"
+          className={inputClassName}
         />
       </label>
 
@@ -149,21 +142,20 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-md border border-brand-700 bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
-          style={{ backgroundColor: "#1666c6", color: "#ffffff", borderColor: "#14509c" }}
+          className="w-full rounded-lg border border-brand-500 bg-brand-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-400 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Sending..." : "Submit Contact Form"}
         </button>
       </div>
 
       {successMessage ? (
-        <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
+        <p className="rounded-md border border-emerald-800 bg-emerald-950/60 px-3 py-2 text-sm text-emerald-300">
           {successMessage}
         </p>
       ) : null}
 
       {errorMessage ? (
-        <p className="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">{errorMessage}</p>
+        <p className="rounded-md border border-rose-800 bg-rose-950/60 px-3 py-2 text-sm text-rose-300">{errorMessage}</p>
       ) : null}
     </form>
   );
