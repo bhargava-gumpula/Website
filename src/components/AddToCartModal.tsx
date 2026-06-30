@@ -214,20 +214,32 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
             ) : slots.length === 0 ? (
               <p className="mt-3 text-sm text-slate-500">No upcoming times for this class. Check back soon.</p>
             ) : (
-              <FormSelect
-                wrapperClassName="mt-3"
-                value={timeSlotId}
-                onChange={(event) => setTimeSlotId(event.target.value)}
-              >
-                <option value="" disabled>
-                  Select a time
-                </option>
-                {slots.map((slot) => (
-                  <option key={slot.id} value={slot.id}>
-                    {formatSlotTimeLocal(slot.startsAt)} — {formatRemainingSlots(slot.remaining)}
-                  </option>
-                ))}
-              </FormSelect>
+              <div className="mt-3 max-h-56 overflow-y-auto overscroll-y-contain pr-1">
+                <ul className="space-y-2">
+                  {slots.map((slot) => (
+                    <li key={slot.id}>
+                      <label
+                        className="flex cursor-pointer items-start gap-3 rounded-lg border border-slate-700 bg-slate-950/50 px-3 py-2.5 text-sm text-slate-300 transition-colors has-[:checked]:border-brand-400 has-[:checked]:bg-brand-500/10"
+                      >
+                        <input
+                          type="radio"
+                          name="timeSlot"
+                          value={slot.id}
+                          checked={timeSlotId === slot.id}
+                          onChange={() => setTimeSlotId(slot.id)}
+                          className="mt-1 accent-brand-400"
+                        />
+                        <span>
+                          {formatSlotTimeLocal(slot.startsAt)}
+                          <span className="mt-0.5 block text-xs text-brand-300">
+                            {formatRemainingSlots(slot.remaining)}
+                          </span>
+                        </span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </fieldset>
         </div>
