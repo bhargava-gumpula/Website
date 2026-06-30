@@ -11,10 +11,11 @@ import {
   type CartDelivery,
   useCart
 } from "@/context/CartContext";
-import { formatRemainingSlots, formatSlotTimeLocal } from "@/lib/formatSlotTime";
-
-const inputClassName =
-  "mt-2 w-full rounded-md border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none ring-brand-500 focus:ring-2";
+import {
+  formatRemainingSlots,
+  formatSlotTimeLocal
+} from "@/lib/formatSlotTime";
+import { FormSelect } from "@/components/FormSelect";
 
 type CalendarSlot = {
   id: string;
@@ -188,17 +189,17 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
 
           <fieldset>
             <legend className="text-sm font-medium text-slate-300">Audience</legend>
-            <select
+            <FormSelect
+              wrapperClassName="mt-2"
               value={audience}
               onChange={(event) => setAudience(event.target.value as CartAudience | "")}
-              className={inputClassName}
             >
               <option value="" disabled>
                 Select young or adult
               </option>
               <option value="young">Young (below high school)</option>
               <option value="adult">Adult (high school and above)</option>
-            </select>
+            </FormSelect>
           </fieldset>
 
           <fieldset>
@@ -213,30 +214,20 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
             ) : slots.length === 0 ? (
               <p className="mt-3 text-sm text-slate-500">No upcoming times for this class. Check back soon.</p>
             ) : (
-              <ul className="mt-3 space-y-2">
+              <FormSelect
+                wrapperClassName="mt-3"
+                value={timeSlotId}
+                onChange={(event) => setTimeSlotId(event.target.value)}
+              >
+                <option value="" disabled>
+                  Select a time
+                </option>
                 {slots.map((slot) => (
-                  <li key={slot.id}>
-                    <label
-                      className={`flex cursor-pointer items-start gap-3 rounded-md border border-slate-700 bg-slate-950/50 px-3 py-2 text-sm text-slate-300 has-[:checked]:border-brand-400 has-[:checked]:bg-brand-500/10`}
-                    >
-                      <input
-                        type="radio"
-                        name="timeSlot"
-                        value={slot.id}
-                        checked={timeSlotId === slot.id}
-                        onChange={() => setTimeSlotId(slot.id)}
-                        className="mt-1 accent-brand-400"
-                      />
-                      <span>
-                        {formatSlotTimeLocal(slot.startsAt)}
-                        <span className="mt-0.5 block text-xs text-brand-300">
-                          {formatRemainingSlots(slot.remaining)}
-                        </span>
-                      </span>
-                    </label>
-                  </li>
+                  <option key={slot.id} value={slot.id}>
+                    {formatSlotTimeLocal(slot.startsAt)} — {formatRemainingSlots(slot.remaining)}
+                  </option>
                 ))}
-              </ul>
+              </FormSelect>
             )}
           </fieldset>
         </div>
