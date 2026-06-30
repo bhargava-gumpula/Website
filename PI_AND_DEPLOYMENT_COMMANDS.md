@@ -121,7 +121,27 @@ Dashboard: https://one.dash.cloudflare.com → **Networks** → **Tunnels**
 
 ## curl on the Pi (proxy note)
 
-This Pi may have `http_proxy` set. For local checks, always use:
+This Pi may have `http_proxy` set (pm2 can inherit `HTTP_PROXY=http://192.168.1.134:4000`). That breaks Google Calendar API calls (524 timeouts on `/api/calendar/slots`).
+
+Add to `~/Work/Website/.env`:
+
+```text
+HTTP_PROXY=
+HTTPS_PROXY=
+http_proxy=
+https_proxy=
+NO_PROXY=googleapis.com,www.googleapis.com,127.0.0.1,localhost
+```
+
+Then restart:
+
+```bash
+pm2 restart website --update-env
+```
+
+The app also bypasses proxy in code for Google Calendar, but clearing pm2 env avoids other issues.
+
+For local checks, always use:
 
 ```bash
 curl -I --noproxy '*' http://127.0.0.1:3000

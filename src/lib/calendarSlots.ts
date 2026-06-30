@@ -1,8 +1,7 @@
 import { getMaxCapacityForClass } from "@/lib/classCapacity";
 import {
   appendBookedToEvent,
-  getCalendarClient,
-  getCalendarId,
+  getCalendarEvent,
   isEventTitleBooked,
   isGoogleCalendarConfigured,
   listUpcomingCalendarEvents,
@@ -91,15 +90,10 @@ export async function resolveCalendarSlot(params: {
     return { ok: false, error: "Scheduling is not configured yet." };
   }
 
-  const calendar = getCalendarClient();
   let event;
 
   try {
-    const response = await calendar.events.get({
-      calendarId: getCalendarId(),
-      eventId: params.eventId
-    });
-    event = response.data;
+    event = await getCalendarEvent(params.eventId);
   } catch {
     return { ok: false, error: "One or more time slots are invalid." };
   }
