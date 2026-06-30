@@ -1,6 +1,6 @@
 # Personal Details (Website Content Source)
 
-Last updated: 2026-06-21
+Last updated: 2026-06-29
 Owner: Bhargava Gumpula
 
 ## Links
@@ -54,40 +54,11 @@ Built as part of Harvard CS50P. This project includes an account system with mul
 
 - Demo: https://www.youtube.com/watch?v=BkqTLnhLsCg
 
-## Classes To Offer
+## Classes
 
-### Rubik's Cubing Class
+Full class details — pricing, syllabus, locations, promotions, and planned features — are in **`CLASSES_INFORMATION.md`**.
 
-- Formats:
-  - 1-on-1
-  - Group
-- Delivery modes:
-  - Live
-  - Online
-- Current pricing intent:
-  - Free for now
-- Levels:
-  - Sub 90 seconds
-  - Sub 1 minute
-  - Sub 45 seconds
-  - Sub 30 seconds
-  - Sub 20 seconds
-
-### Python Class
-
-- Formats:
-  - Group
-  - Private (individual)
-- Topics:
-  - Python basics
-  - Variables
-  - Functions
-  - Classes
-
-### Coming Soon Classes
-
-- Data Structures and Algorithms
-- Introduction to C++
+Summary: Rubik's Cubing and Python (1-on-1 and group, in person and online); DSA and C++ coming soon.
 
 ## Testimonials
 

@@ -121,4 +121,4 @@ Goal: deliver the public-facing first release with core pages and inquiry flows.
 
 ## Next Immediate Step
 
-Replace placeholder content in `src/data/siteContent.ts` with real project/class/testimonial/profile data and perform device QA on phone + desktop.
+Replace placeholder content in `src/data/siteContent.ts` with real project/class/testimonial/profile data (class details in `CLASSES_INFORMATION.md`) and perform device QA on phone + desktop.

@@ -9,11 +9,14 @@ export type Project = {
 
 export type ClassOffering = {
   title: string;
+  titleSubline?: string;
+  slug: string;
   category: "Rubik's Cubing" | "Python" | "C++";
   format: "1-on-1" | "Group";
   level: "Beginner" | "Intermediate" | "Advanced";
   status: "Open" | "Coming Soon";
   summary: string;
+  priceBadge?: string;
 };
 
 export type Testimonial = {
@@ -140,7 +143,8 @@ export const projectsPageContent = {
 export const classesPageContent = {
   eyebrow: "Classes",
   title: "Rubik's Cubing and Python classes",
-  description: "Join class tracks with private or group options. More technical tracks are coming soon.",
+  description:
+    "Join 1-on-1 or group sessions. 1-on-1 is available in person or online. Group classes are in person only.",
   datesNote: "Class schedule coming soon.",
   ctaTitle: "Ready to join a class?",
   ctaDescription: "Send your goals and preferred format. I will follow up with the next available slot.",
@@ -175,42 +179,52 @@ export const projects: Project[] = [
 export const classes: ClassOffering[] = [
   {
     title: "Rubik's Cubing (1-on-1)",
+    slug: "rubiks-cubing-1-on-1",
     category: "Rubik's Cubing",
     format: "1-on-1",
     level: "Beginner",
     status: "Open",
+    priceBadge: "$15–$20",
     summary:
-      "Private in-person coaching for levels from sub-90 seconds to sub-20 seconds goals, tailored to current solve speed."
+      "Private sessions in person or online, tailored from sub-90 seconds through sub-20 second goals. Most learners need about 4–6 classes to learn the cube."
   },
   {
-    title: "Rubik's Cubing (Group Class)",
+    title: "Rubik's Cubing (Group)",
+    slug: "rubiks-cubing-group",
     category: "Rubik's Cubing",
     format: "Group",
     level: "Beginner",
     status: "Open",
+    priceBadge: "$10",
     summary:
-      "In-person group sessions with step-by-step progression: sub-90 seconds, sub-60 seconds, sub-45 seconds, sub-30 seconds, and sub-20 seconds tracks."
+      "In-person group sessions with step-by-step progression from sub-90 through sub-20 second tracks. Most learners need about 4–6 classes to learn the cube."
+  },
+  {
+    title: "Python Fundamentals",
+    titleSubline: "(1-on-1)",
+    slug: "python-fundamentals-1-on-1",
+    category: "Python",
+    format: "1-on-1",
+    level: "Beginner",
+    status: "Open",
+    priceBadge: "$20–$25",
+    summary:
+      "Private Python mentoring in person or online for students who want individualized pacing and targeted support."
   },
   {
     title: "Python Fundamentals (Group)",
+    slug: "python-fundamentals-group",
     category: "Python",
     format: "Group",
     level: "Beginner",
     status: "Open",
+    priceBadge: "$15",
     summary:
-      "In-person and online group class covering Python basics including variables, loops, functions, classes, and practical coding foundations."
-  },
-  {
-    title: "Python Fundamentals (1-on-1)",
-    category: "Python",
-    format: "1-on-1",
-    level: "Beginner",
-    status: "Open",
-    summary:
-      "Private in-person and online Python mentoring for students who want individualized pacing and targeted support."
+      "In-person group class covering Python basics: variables, loops, conditionals, functions, classes, and practical coding foundations."
   },
   {
     title: "Data Structures and Algorithms",
+    slug: "data-structures-and-algorithms",
     category: "C++",
     format: "Group",
     level: "Intermediate",
@@ -219,6 +233,7 @@ export const classes: ClassOffering[] = [
   },
   {
     title: "Introduction to C++",
+    slug: "introduction-to-cpp",
     category: "C++",
     format: "Group",
     level: "Beginner",
@@ -228,3 +243,7 @@ export const classes: ClassOffering[] = [
 ];
 
 export const testimonials: Testimonial[] = [];
+
+export function getClassRegistrationTitle(classItem: ClassOffering): string {
+  return classItem.titleSubline ? `${classItem.title} ${classItem.titleSubline}` : classItem.title;
+}

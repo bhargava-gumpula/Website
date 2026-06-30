@@ -2,9 +2,11 @@
 
 Use this guide to replace placeholder content quickly without editing page components.
 
-## Primary File to Edit
+## Primary Files to Edit
 
-- `src/data/siteContent.ts`
+- `src/data/siteContent.ts` — live website content
+- `CLASSES_INFORMATION.md` — class source of truth (pricing, syllabus, locations); update here first, then mirror into `siteContent.ts`
+- `NEXT_STEPS.md` — living checklist; check off items when done
 
 ## What to Replace First
 
