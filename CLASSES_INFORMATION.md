@@ -54,7 +54,7 @@ Calendar will show separate slots (e.g. "Rubik's group (young)" vs "Rubik's grou
 
 | Format | In person | Online |
 |--------|-----------|--------|
-| 1-on-1 | $20 | $15 |
+| 1-on-1 | $20 | $20 |
 | Group (5–8 students) | $10 | — |
 
 **Typical timeline:** about 4–6 classes to learn the cube (beginner track).
@@ -63,7 +63,7 @@ Calendar will show separate slots (e.g. "Rubik's group (young)" vs "Rubik's grou
 
 | Format | In person | Online |
 |--------|-----------|--------|
-| 1-on-1 | $25 | $20 |
+| 1-on-1 | $25 | $25 |
 | Group (5–8 students) | $15 | — |
 
 ---

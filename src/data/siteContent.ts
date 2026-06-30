@@ -184,7 +184,7 @@ export const classes: ClassOffering[] = [
     format: "1-on-1",
     level: "Beginner",
     status: "Open",
-    priceBadge: "$15–$20",
+    priceBadge: "$20",
     summary:
       "Private sessions in person or online, tailored from sub-90 seconds through sub-20 second goals. Most learners need about 4–6 classes to learn the cube."
   },
@@ -207,7 +207,7 @@ export const classes: ClassOffering[] = [
     format: "1-on-1",
     level: "Beginner",
     status: "Open",
-    priceBadge: "$20–$25",
+    priceBadge: "$25",
     summary:
       "Private Python mentoring in person or online for students who want individualized pacing and targeted support."
   },
