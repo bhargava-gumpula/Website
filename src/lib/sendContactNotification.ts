@@ -1,4 +1,10 @@
-import nodemailer from "nodemailer";
+import {
+  createMailTransporter,
+  getNotifyEmail,
+  getSmtpConfig,
+  isEmailConfigured,
+  websiteAdminSubjectPrefix
+} from "@/lib/smtp";
 
 export type ContactNotification = {
   name: string;
@@ -7,26 +13,6 @@ export type ContactNotification = {
   registeredClass?: string;
   message: string;
 };
-
-const defaultNotifyEmail = "bhargava.gumpula@gmail.com";
-
-function getSmtpConfig() {
-  const user = process.env.SMTP_USER?.trim();
-  const pass = process.env.SMTP_PASS?.trim();
-
-  if (!user || !pass) {
-    return null;
-  }
-
-  const port = Number(process.env.SMTP_PORT ?? "587");
-
-  return {
-    host: process.env.SMTP_HOST?.trim() || "smtp.gmail.com",
-    port: Number.isFinite(port) ? port : 587,
-    secure: process.env.SMTP_SECURE === "true",
-    auth: { user, pass }
-  };
-}
 
 function buildEmailBody(submission: ContactNotification) {
   const lines = [
@@ -54,14 +40,15 @@ export async function sendContactNotification(submission: ContactNotification): 
     return false;
   }
 
-  const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL?.trim() || defaultNotifyEmail;
-  const transporter = nodemailer.createTransport(smtpConfig);
+  const notifyEmail = getNotifyEmail();
+  const transporter = createMailTransporter();
+  if (!transporter) return false;
 
   await transporter.sendMail({
     from: smtpConfig.auth.user,
     to: notifyEmail,
     replyTo: submission.email,
-    subject: `Website contact from ${submission.name}`,
+    subject: `${websiteAdminSubjectPrefix} contact from ${submission.name}`,
     text: buildEmailBody(submission)
   });
 
@@ -69,5 +56,5 @@ export async function sendContactNotification(submission: ContactNotification): 
 }
 
 export function isContactEmailConfigured() {
-  return getSmtpConfig() !== null;
+  return isEmailConfigured();
 }

@@ -1,13 +1,15 @@
-import Link from "next/link";
-import { getClassRegistrationTitle, type ClassOffering } from "@/data/siteContent";
+"use client";
+
+import type { ClassOffering } from "@/data/siteContent";
+import { useCart } from "@/context/CartContext";
 
 type ClassCardProps = {
   classItem: ClassOffering;
 };
 
 export function ClassCard({ classItem }: ClassCardProps) {
+  const { openAddModal } = useCart();
   const isComingSoon = classItem.status === "Coming Soon";
-  const registrationTitle = getClassRegistrationTitle(classItem);
 
   return (
     <article className="hover-lift rounded-xl border border-slate-700/70 bg-slate-900 p-5 shadow-soft">
@@ -56,15 +58,16 @@ export function ClassCard({ classItem }: ClassCardProps) {
             aria-disabled="true"
             className="inline-block cursor-not-allowed rounded-md border border-brand-400 px-3 py-1.5 text-xs font-semibold text-brand-400 saturate-0 opacity-50"
           >
-            Register
+            Add
           </button>
         ) : (
-          <Link
-            href={`/contact?class=${encodeURIComponent(registrationTitle)}`}
+          <button
+            type="button"
+            onClick={() => openAddModal(classItem)}
             className="inline-block rounded-md border border-brand-400 px-3 py-1.5 text-xs font-semibold text-brand-400 transition hover:-translate-y-0.5 hover:bg-brand-50"
           >
-            Register
-          </Link>
+            Add
+          </button>
         )}
       </div>
     </article>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
+import { CartShell } from "@/components/CartShell";
 import { Navbar } from "@/components/Navbar";
 import { siteIdentity } from "@/data/siteContent";
 import "./globals.css";
@@ -20,11 +21,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={plusJakarta.variable}>
       <body className="font-sans antialiased">
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <CartShell>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </CartShell>
       </body>
     </html>
   );

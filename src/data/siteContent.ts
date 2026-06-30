@@ -247,3 +247,9 @@ export const testimonials: Testimonial[] = [];
 export function getClassRegistrationTitle(classItem: ClassOffering): string {
   return classItem.titleSubline ? `${classItem.title} ${classItem.titleSubline}` : classItem.title;
 }
+
+export function parsePriceBadgeToCents(priceBadge: string): number {
+  const match = priceBadge.match(/\$(\d+(?:\.\d{2})?)/);
+  if (!match) return 0;
+  return Math.round(parseFloat(match[1]) * 100);
+}

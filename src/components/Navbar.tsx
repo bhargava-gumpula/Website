@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { externalLinks, siteIdentity } from "@/data/siteContent";
+import { CartNavButton } from "@/components/CartSidePanel";
 import { GitHubIcon, LinkedInIcon, WcaLogoIcon, YouTubeIcon } from "@/components/SocialIcons";
 
 const navItems = [
@@ -64,6 +65,7 @@ export function Navbar() {
           </ul>
 
           <div className="hidden items-center gap-3 text-sm font-medium md:flex">
+            <CartNavButton />
             <Link
               href="/contact"
               className="rounded-lg border border-slate-700 px-3.5 py-1.5 text-slate-300 transition duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-400 hover:shadow-sm"
@@ -116,6 +118,12 @@ export function Navbar() {
               >
                 Contact
               </Link>
+            </li>
+            <li className="pt-1">
+              <div className="flex items-center justify-center gap-3">
+                <CartNavButton className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-600 bg-slate-800 text-slate-300 transition hover:bg-slate-700" />
+                <span className="text-sm text-slate-400">Cart</span>
+              </div>
             </li>
             <li className="pt-1">
               <div className="flex items-center justify-center gap-2">

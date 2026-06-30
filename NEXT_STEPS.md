@@ -1,88 +1,86 @@
 # Next Steps
 
-Last updated: 2026-06-29  
+Last updated: 2026-06-30  
 Owner: Bhargava Gumpula
 
-Living checklist for website and class work. Update this file whenever a step is completed or priorities change. Class details live in `CLASSES_INFORMATION.md`.
+Living checklist. Details live in **`PHASE_1_IMPLEMENTATION_PLAN.md`**.
 
 ---
 
-## A. Content gaps (fill before detail pages)
+## A. Content gaps
 
-- [ ] Rubik's Cube — Sub 60 seconds Step 3 and full syllabus
-- [ ] Rubik's Cube — Sub 30 seconds curriculum outline
-- [ ] Rubik's Cube — time distribution (first / second / third layer)
-- [ ] Python — full lesson plan, projects, and session count
-- [ ] Class schedule — days, times, recurring vs one-off
-- [ ] Summer promo — promo code, terms, and expiry
-- [ ] Payment provider — choose and connect (e.g. Stripe)
+- [ ] Rubik's Cube — Sub 60s Step 3, Sub 30s outline, layer time distribution
+- [ ] Python — full lesson plan, projects, session count
+- [ ] Summer promo — code, terms, expiry
 
 ---
 
-## B. Sync docs → live site (Phase 1 finish)
+## B. Phase 1 site sync (done)
 
-- [x] Create `CLASSES_INFORMATION.md` as class source of truth
-- [x] Trim `PERSONAL_DETAILS.md` and cross-link docs
-- [x] Update `src/data/siteContent.ts` with accurate class summaries (no pricing on cards)
-- [x] Show updated class info on Classes page and class cards (no pricing)
-- [x] Run `npm run build:webpack` (build QA — passed 2026-06-29)
-- [x] Device QA — phone + desktop pass on all public pages (approved 2026-06-29)
-- [ ] Testimonials — collect quotes and add to `testimonials[]` in `siteContent.ts`
-- [x] Profile photo — wired on Home and About (`/images/bhargava-photo-v4.png`)
-- [ ] Class / teaching photos — for site and social proof
+- [x] Class content in `siteContent.ts`
+- [x] Class cards, price badges, Classes page intro
+- [x] Build QA + device QA
+- [x] Profile photo on Home/About
+- [ ] Testimonials — when quotes available
+- [ ] Class / teaching photos
 
 ---
 
-## C. Class website features (near-term)
+## C. Payments & cart
 
-- [ ] Summer promo banner — site-wide with code or CTA
-- [ ] Class detail pages — `/classes/[slug]` with pricing by tier + syllabus
-- [ ] Class calendar page — times, location, schedule
-- [ ] Registration emails — auto-reply after sign-up
-- [ ] Online payments — checkout or pay link tied to registration
+See **Payments & cart** in `PHASE_1_IMPLEMENTATION_PLAN.md`.
 
----
-
-## D. Platform features (Phase 2+)
-
-- [ ] Authentication — sign up / sign in
-- [ ] Restricted resources — Rubik's algorithms behind login
-- [ ] Registration persistence — real sign-up flow beyond contact form
-- [ ] Blog — updates / newsletter
-- [ ] Admin dashboard — edit classes, blog, visibility without code
-- [ ] AI chatbot — navigation and contact help
+- [x] P1 — Stripe test account + products (you)
+- [ ] P1 — Copy test keys + Price IDs to Pi `.env`
+- [x] P2 — Cart side panel + navbar icon
+- [x] P3 — Add modal, Register → Add
+- [x] P5 — Stripe Checkout API + webhook + success/cancel pages
+- [x] P7 — Confirmation emails (customer + admin)
+- [ ] P6 — Full checkout on live site (Pi deploy + production webhook)
+- [ ] P8 — Go live (live Stripe keys — explicit approval)
+- [ ] Summer promo · class detail pages · public calendar page (later)
 
 ---
 
-## E. Operations / service hours
+## D. Google Calendar scheduling
 
-- [ ] Take class photos
-- [ ] Collect testimonials (also tracked in B)
-- [ ] Registration email workflow (manual first, then automate in C)
+See **Google Calendar scheduling** + **setup walkthrough** in `PHASE_1_IMPLEMENTATION_PLAN.md`.
+
+- [x] G1 — Teaching calendar + Cloud project + service account + `.env`
+- [x] G2 — Slots API (events, remaining count)
+- [x] G3 — Add modal (local time, slots remaining)
+- [x] G4 — Webhook → `(BOOKED)` when cap reached (group 8, 1-on-1 1)
+- [x] G5 — Checkout validation (no overbooking)
 
 ---
 
-## F. Deploy and docs
+## E. Platform (Phase 2+)
 
-- [x] Create `NEXT_STEPS.md` living checklist
-- [ ] Commit doc and site updates — needs your approval
-- [ ] Pi deploy after approved push — needs your approval
+- [ ] Auth · restricted resources · blog · admin · AI chatbot
+
+See `DESIGN_ARCHITECTURE_BASELINE.md`.
+
+---
+
+## F. Operations
+
+- [ ] Class photos · testimonials
+
+---
+
+## G. Deploy
+
+- [x] Commit + Pi deploy (2026-06-29 price update)
+- [ ] Commit cart + payments + calendar when approved
+
+---
+
+## H. Security (later)
+
+- [ ] Rate limit contact form · max field lengths · security headers · honeypot · email subject sanitize · npm audit
 
 ---
 
 ## Current focus
 
-**Bucket B** — one step at a time with explicit approval.
-
-| Step | Status |
-|------|--------|
-| B1 — Update `CLASSES_INFORMATION.md` | Done (2026-06-29) |
-| B2 — Update `siteContent.ts` | Done (2026-06-29) — no pricing on cards |
-| B3 — `ClassCard.tsx` $ badge | Done (2026-06-29) — review on localhost |
-| B3b — Card links to detail page | On hold — add when detail page summaries are ready |
-| B3c — `/classes/[slug]` detail pages | On hold — same as B3b |
-| B4 — Build QA | Done (2026-06-29) — re-run passed |
-| B5 — Device QA (you) | Done (2026-06-29) |
-| B7 — Commit + deploy | Next — needs your approval |
-
-**Location:** Evergreen Branch Library documented here only — **not on website** until schedule/calendar.
+**Pi deploy** when cart + calendar + payments are approved for production.

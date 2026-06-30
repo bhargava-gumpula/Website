@@ -432,4 +432,5 @@ To fix Pi IP for SSH: set a **DHCP reservation** in the router admin UI.
 
 - **Pi commands:** `PI_AND_DEPLOYMENT_COMMANDS.md`
 - **Content edits:** `CONTENT_EDITING_GUIDE.md`
+- **Phase 1 plan:** `PHASE_1_IMPLEMENTATION_PLAN.md`
 - **Cloudflare dashboard:** https://one.dash.cloudflare.com → Networks → Tunnels

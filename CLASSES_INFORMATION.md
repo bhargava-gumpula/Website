@@ -20,7 +20,7 @@ This file is the single reference for class offerings, pricing, syllabus content
 
 **Session length:** 45 minutes per class.
 
-**Registration (current):** Contact form only — register interest, follow up by email.
+**Registration:** Cart + Stripe checkout (test mode locally). **Schedule:** Google Calendar — event title must match class name exactly (see `PHASE_1_IMPLEMENTATION_PLAN.md`).
 
 **Online 1-on-1:** Hosted via Zoom; the website says "online" only (does not name Zoom).
 
