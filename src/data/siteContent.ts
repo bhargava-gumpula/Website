@@ -12,16 +12,34 @@ export type ClassDetailSection = {
   items: string[];
 };
 
+export type ClassLocation = {
+  inPerson?: string;
+  online?: string;
+  announcement?: string;
+};
+
 export type ClassDetail = {
   overview: string;
   sessionLength: string;
-  delivery: string;
+  location: ClassLocation;
   groupSize?: string;
   pricingDetail: string;
   timelineNote?: string;
   sections: ClassDetailSection[];
   showHeaderPrice?: boolean;
   showHeaderStatus?: boolean;
+};
+
+export const classVenueName = "Evergreen Branch Library";
+export const classVenueInPersonLine = `In person at ${classVenueName}`;
+export const classVenueOnlineLine = "Online (video call)";
+export const inPersonClassLocation: ClassLocation = { inPerson: classVenueInPersonLine };
+export const oneOnOneClassLocation: ClassLocation = {
+  inPerson: classVenueInPersonLine,
+  online: classVenueOnlineLine
+};
+export const comingSoonClassLocation: ClassLocation = {
+  announcement: "Format and location to be announced"
 };
 
 export type ClassOffering = {
@@ -98,8 +116,7 @@ export const homeContent = {
   classesSection: {
     eyebrow: "Classes",
     title: "Learning options you can join now",
-    description: "Choose 1-on-1 or group classes depending on your goals.",
-    scheduleNote: "Class schedule coming soon."
+    description: "Choose 1-on-1 or group classes depending on your goals."
   },
   testimonialsSection: {
     eyebrow: "Testimonials",
@@ -165,7 +182,6 @@ export const classesPageContent = {
   title: "Rubik's Cubing and Python classes",
   description:
     "Join 1-on-1 or group sessions. 1-on-1 is available in person or online. Group classes are in person only.",
-  datesNote: "Class schedule coming soon.",
   ctaTitle: "Ready to join a class?",
   ctaDescription: "Send your goals and preferred format. I will follow up with the next available slot.",
   ctaLabel: "Register Interest",
@@ -211,7 +227,7 @@ export const classes: ClassOffering[] = [
       overview:
         "One-on-one Rubik's Cube coaching built around your current speed and goals. Sessions are structured, practical, and paced for you — whether you are solving for the first time or pushing toward faster times.",
       sessionLength: "45 minutes per session",
-      delivery: "In person or online",
+      location: oneOnOneClassLocation,
       pricingDetail: "$20 per session",
       showHeaderPrice: false,
       showHeaderStatus: false,
@@ -253,7 +269,7 @@ export const classes: ClassOffering[] = [
       overview:
         "Small in-person group classes for learners who want structure, community, and steady progress on the Rubik's Cube. Each session builds on the last with clear demonstrations and guided practice.",
       sessionLength: "45 minutes per session",
-      delivery: "In person only",
+      location: inPersonClassLocation,
       groupSize: "5–8 students",
       pricingDetail: "$10 per session",
       showHeaderPrice: false,
@@ -297,8 +313,10 @@ export const classes: ClassOffering[] = [
       overview:
         "Private Python fundamentals coaching for students who want focused help building real coding skills. Lessons adapt to your pace, questions, and projects.",
       sessionLength: "45 minutes per session",
-      delivery: "In person or online",
+      location: oneOnOneClassLocation,
       pricingDetail: "$25 per session",
+      showHeaderPrice: false,
+      showHeaderStatus: false,
       sections: [
         {
           title: "What you get",
@@ -338,9 +356,11 @@ export const classes: ClassOffering[] = [
       overview:
         "A beginner-friendly in-person group class for learning Python from the ground up. Sessions combine short explanations, live coding, and hands-on exercises so concepts stick.",
       sessionLength: "45 minutes per session",
-      delivery: "In person only",
+      location: inPersonClassLocation,
       groupSize: "5–8 students",
       pricingDetail: "$15 per session",
+      showHeaderPrice: false,
+      showHeaderStatus: false,
       sections: [
         {
           title: "What you get",
@@ -378,7 +398,7 @@ export const classes: ClassOffering[] = [
       overview:
         "An upcoming group track for students ready to move beyond syntax into data structures, algorithms, and competitive programming-style problem solving. Full syllabus and schedule will be posted before registration opens.",
       sessionLength: "45 minutes per session (planned)",
-      delivery: "Format and location to be announced",
+      location: comingSoonClassLocation,
       groupSize: "Small group (planned)",
       pricingDetail: "Pricing to be announced",
       sections: [
@@ -414,7 +434,7 @@ export const classes: ClassOffering[] = [
       overview:
         "An upcoming beginner group class for learning C++ syntax, core programming concepts, and the habits needed for more advanced computer science work. Details will be posted before registration opens.",
       sessionLength: "45 minutes per session (planned)",
-      delivery: "Format and location to be announced",
+      location: comingSoonClassLocation,
       groupSize: "Small group (planned)",
       pricingDetail: "Pricing to be announced",
       sections: [

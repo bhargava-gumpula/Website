@@ -40,17 +40,14 @@ export default async function ClassDetailPage({ params }: ClassDetailPageProps) 
   const displayTitle = getClassRegistrationTitle(classItem);
   const isComingSoon = classItem.status === "Coming Soon";
   const { detail } = classItem;
+  const { location } = detail;
 
   const showHeaderPrice =
     !isComingSoon && classItem.priceBadge && classItem.detail.showHeaderPrice !== false;
   const showHeaderStatus = classItem.detail.showHeaderStatus !== false;
-
-  const facts = [
-    { label: "Session length", value: detail.sessionLength },
-    { label: "Delivery", value: detail.delivery },
-    ...(detail.groupSize ? [{ label: "Group size", value: detail.groupSize }] : []),
-    { label: "Price", value: detail.pricingDetail }
-  ];
+  const isGroupClass = Boolean(detail.groupSize);
+  const detailColumnClass =
+    "border-t border-slate-700/70 pt-5 sm:border-t-0 sm:border-l sm:pl-6 sm:pt-0";
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10 md:py-16">
@@ -89,17 +86,37 @@ export default async function ClassDetailPage({ params }: ClassDetailPageProps) 
         ) : null}
       </div>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {facts.map((fact) => (
-          <article
-            key={fact.label}
-            className="rounded-xl border border-slate-700/70 bg-slate-900 p-4 shadow-soft"
-          >
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{fact.label}</p>
-            <p className="mt-2 text-sm font-medium text-slate-100">{fact.value}</p>
-          </article>
-        ))}
-      </section>
+      <article className="rounded-xl border border-slate-700/70 bg-slate-900 p-5 shadow-soft">
+        <div
+          className={`grid grid-cols-1 gap-5 sm:gap-6 ${isGroupClass ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}
+        >
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Session length</p>
+            <p className="mt-2 text-sm font-medium text-slate-100">{detail.sessionLength}</p>
+          </div>
+
+          <div className={detailColumnClass}>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Price</p>
+            <p className="mt-2 text-sm font-medium text-slate-100">{detail.pricingDetail}</p>
+          </div>
+
+          {isGroupClass ? (
+            <div className={detailColumnClass}>
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Group size</p>
+              <p className="mt-2 text-sm font-medium text-slate-100">{detail.groupSize}</p>
+            </div>
+          ) : null}
+
+          <div className={detailColumnClass}>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Location</p>
+            <div className="mt-2 space-y-1 text-sm font-medium text-slate-100">
+              {location.announcement ? <p>{location.announcement}</p> : null}
+              {location.inPerson ? <p>{location.inPerson}</p> : null}
+              {location.online ? <p>{location.online}</p> : null}
+            </div>
+          </div>
+        </div>
+      </article>
 
       {detail.timelineNote ? (
         <p className="rounded-xl border border-slate-700 bg-slate-900/60 px-4 py-3 text-sm text-slate-300">

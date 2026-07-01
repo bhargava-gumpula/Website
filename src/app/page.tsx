@@ -77,7 +77,6 @@ export default function HomePage() {
           title={homeContent.classesSection.title}
           description={homeContent.classesSection.description}
         />
-        <p className="-mt-2 text-sm text-slate-500">{homeContent.classesSection.scheduleNote}</p>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {classes.map((classItem) => (
             <ClassCard key={classItem.title} classItem={classItem} />

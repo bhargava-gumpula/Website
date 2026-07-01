@@ -1,4 +1,5 @@
 import type { CartAudience, CartDelivery } from "@/lib/cartTypes";
+import { classVenueInPersonLine, classVenueOnlineLine } from "@/data/siteContent";
 import { formatSlotTimeLocal } from "@/lib/formatSlotTime";
 import type { OrderLineItem, StoredOrder } from "@/lib/orders";
 import {
@@ -16,6 +17,10 @@ export type OrderEmailParams = {
 
 function formatDelivery(delivery: CartDelivery): string {
   return delivery === "in-person" ? "In person" : "Online";
+}
+
+function formatLocation(delivery: CartDelivery): string {
+  return delivery === "in-person" ? classVenueInPersonLine : classVenueOnlineLine;
 }
 
 function formatAudience(audience: CartAudience): string {
@@ -49,6 +54,7 @@ function buildCustomerBody(params: OrderEmailParams): string {
     lines.push(
       `- ${item.title}`,
       `  ${formatDelivery(item.delivery)} · ${formatAudience(item.audience)}`,
+      `  ${formatLocation(item.delivery)}`,
       `  ${formatSessionTime(item)} · ${item.priceLabel}`,
       ""
     );
@@ -87,6 +93,7 @@ function buildAdminBody(params: OrderEmailParams): string {
       "",
       `- ${item.title}`,
       `  ${formatDelivery(item.delivery)} · ${formatAudience(item.audience)}`,
+      `  ${formatLocation(item.delivery)}`,
       `  ${formatSessionTime(item)} · ${item.priceLabel}`
     );
   }

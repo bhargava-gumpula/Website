@@ -12,8 +12,6 @@ export default function ClassesPage() {
         description={classesPageContent.description}
       />
 
-      <p className="-mt-4 text-sm text-slate-500">{classesPageContent.datesNote}</p>
-
       <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {classes.map((classItem) => (
           <ClassCard key={classItem.title} classItem={classItem} />
