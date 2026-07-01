@@ -9,8 +9,6 @@ import {
 export type ContactNotification = {
   name: string;
   email: string;
-  inquiryType: string;
-  registeredClass?: string;
   message: string;
 };
 
@@ -20,14 +18,10 @@ function buildEmailBody(submission: ContactNotification) {
     "",
     `Name: ${submission.name}`,
     `Email: ${submission.email}`,
-    `Inquiry type: ${submission.inquiryType}`
+    "",
+    "Message:",
+    submission.message
   ];
-
-  if (submission.registeredClass) {
-    lines.push(`Class: ${submission.registeredClass}`);
-  }
-
-  lines.push("", "Message:", submission.message);
 
   return lines.join("\n");
 }

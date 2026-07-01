@@ -182,16 +182,16 @@ export const classesPageContent = {
   title: "Rubik's Cubing and Python classes",
   description:
     "Join 1-on-1 or group sessions. 1-on-1 is available in person or online. Group classes are in person only.",
-  ctaTitle: "Ready to join a class?",
-  ctaDescription: "Send your goals and preferred format. I will follow up with the next available slot.",
-  ctaLabel: "Register Interest",
+  ctaTitle: "Have a question?",
+  ctaDescription: "Reach out about classes, scheduling, or anything else.",
+  ctaLabel: "Contact",
   ctaHref: "/contact"
 };
 
 export const contactPageContent = {
   eyebrow: "Contact",
-  title: "Ask a question or register for classes",
-  description: "Use this form to request class details, ask questions, or discuss collaborations."
+  title: "Ask a question",
+  description: "Use this form for general questions, collaborations, or anything else you would like to discuss."
 };
 
 export const projects: Project[] = [

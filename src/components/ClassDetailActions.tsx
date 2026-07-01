@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import type { ClassOffering } from "@/data/siteContent";
-import { getClassRegistrationTitle } from "@/data/siteContent";
 import { useCart } from "@/context/CartContext";
 
 type ClassDetailActionsProps = {
@@ -23,10 +22,10 @@ export function ClassDetailActions({ classItem }: ClassDetailActionsProps) {
       </Link>
       {isComingSoon ? (
         <Link
-          href={`/contact?class=${encodeURIComponent(getClassRegistrationTitle(classItem))}`}
+          href="/contact"
           className="inline-block rounded-lg border border-brand-500 bg-brand-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-brand-400"
         >
-          Register interest
+          Get in touch
         </Link>
       ) : (
         <button

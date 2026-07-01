@@ -1,30 +1,14 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import { classes } from "@/data/siteContent";
-
-const inquiryTypes = ["Class Registration", "General Question"] as const;
-const openClasses = classes.filter((classItem) => classItem.status === "Open");
+import { FormEvent, useState } from "react";
 
 const inputClassName =
   "mt-1 w-full rounded-md border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none ring-brand-500 placeholder:text-slate-500 focus:ring-2";
 
 export function ContactForm() {
-  const [inquiryType, setInquiryType] = useState<"Class Registration" | "General Question">("General Question");
-  const [selectedClass, setSelectedClass] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    const classFromUrl = new URLSearchParams(window.location.search).get("class");
-    if (classFromUrl) {
-      setInquiryType("Class Registration");
-      setSelectedClass(classFromUrl);
-    }
-  }, []);
-
-  const isClassRegistration = inquiryType === "Class Registration";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,14 +19,11 @@ export function ContactForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const submittedInquiryType = String(formData.get("inquiryType") ?? "");
-    const isClassRegistrationSubmit = submittedInquiryType === "Class Registration";
 
     const payload = {
       name: String(formData.get("name") ?? ""),
       email: String(formData.get("email") ?? ""),
-      inquiryType: submittedInquiryType,
-      registeredClass: isClassRegistrationSubmit ? String(formData.get("registeredClass") ?? "") : "",
+      inquiryType: "General Question",
       message: String(formData.get("message") ?? "")
     };
 
@@ -63,8 +44,6 @@ export function ContactForm() {
 
       setSuccessMessage(data.message ?? "Thanks! Your message was submitted. I will follow up soon.");
       form.reset();
-      setInquiryType("General Question");
-      setSelectedClass("");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
     } finally {
@@ -86,54 +65,12 @@ export function ContactForm() {
       </div>
 
       <label className="text-sm font-medium text-slate-300">
-        Inquiry Type
-        <select
-          name="inquiryType"
-          value={inquiryType}
-          onChange={(event) => setInquiryType(event.target.value as "Class Registration" | "General Question")}
-          className={inputClassName}
-        >
-          {inquiryTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      {isClassRegistration ? (
-        <label className="text-sm font-medium text-slate-300">
-          Class
-          <select
-            required
-            name="registeredClass"
-            value={selectedClass}
-            onChange={(event) => setSelectedClass(event.target.value)}
-            className={inputClassName}
-          >
-            <option value="" disabled>
-              Select a class
-            </option>
-            {openClasses.map((classItem) => (
-              <option key={classItem.title} value={classItem.title}>
-                {classItem.title}
-              </option>
-            ))}
-          </select>
-        </label>
-      ) : null}
-
-      <label className="text-sm font-medium text-slate-300">
         Message
         <textarea
           required
           name="message"
           rows={5}
-          placeholder={
-            isClassRegistration
-              ? "Share your experience level, preferred schedule, etc."
-              : "How can I help?"
-          }
+          placeholder="How can I help?"
           className={inputClassName}
         />
       </label>

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { access, mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { classes } from "@/data/siteContent";
 import { sendContactNotification } from "@/lib/sendContactNotification";
 
 export const runtime = "nodejs";
@@ -11,14 +10,8 @@ type ContactPayload = {
   name: string;
   email: string;
   inquiryType: string;
-  registeredClass?: string;
   message: string;
 };
-
-const allowedInquiryTypes = new Set(["Class Registration", "General Question"]);
-const openClassTitles = new Set(
-  classes.filter((classItem) => classItem.status === "Open").map((classItem) => classItem.title)
-);
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -28,7 +21,6 @@ type StoredSubmission = {
   name: string;
   email: string;
   inquiryType: string;
-  registeredClass?: string;
   message: string;
 };
 
@@ -85,11 +77,9 @@ export async function POST(request: Request) {
 
     const name = payload.name?.trim() ?? "";
     const email = payload.email?.trim() ?? "";
-    const inquiryType = payload.inquiryType?.trim() ?? "";
-    const registeredClass = payload.registeredClass?.trim() ?? "";
     const message = payload.message?.trim() ?? "";
 
-    if (!name || !email || !inquiryType || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
@@ -97,27 +87,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
     }
 
-    if (!allowedInquiryTypes.has(inquiryType)) {
-      return NextResponse.json({ error: "Invalid inquiry type selected." }, { status: 400 });
-    }
-
-    if (inquiryType === "Class Registration") {
-      if (!registeredClass) {
-        return NextResponse.json({ error: "Please select a class." }, { status: 400 });
-      }
-
-      if (!openClassTitles.has(registeredClass)) {
-        return NextResponse.json({ error: "Please select a valid open class." }, { status: 400 });
-      }
-    }
-
     const nextSubmission: StoredSubmission = {
       id: crypto.randomUUID(),
       submittedAt: new Date().toISOString(),
       name,
       email,
-      inquiryType,
-      ...(inquiryType === "Class Registration" ? { registeredClass } : {}),
+      inquiryType: "General Question",
       message
     };
 
@@ -129,8 +104,6 @@ export async function POST(request: Request) {
       await sendContactNotification({
         name,
         email,
-        inquiryType,
-        ...(inquiryType === "Class Registration" ? { registeredClass } : {}),
         message
       });
     } catch (emailError) {
