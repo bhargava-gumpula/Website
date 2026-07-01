@@ -7,6 +7,23 @@ export type Project = {
   demoUrl?: string;
 };
 
+export type ClassDetailSection = {
+  title: string;
+  items: string[];
+};
+
+export type ClassDetail = {
+  overview: string;
+  sessionLength: string;
+  delivery: string;
+  groupSize?: string;
+  pricingDetail: string;
+  timelineNote?: string;
+  sections: ClassDetailSection[];
+  showHeaderPrice?: boolean;
+  showHeaderStatus?: boolean;
+};
+
 export type ClassOffering = {
   title: string;
   titleSubline?: string;
@@ -17,6 +34,9 @@ export type ClassOffering = {
   status: "Open" | "Coming Soon";
   summary: string;
   priceBadge?: string;
+  showPriceBadge?: boolean;
+  showStatusBadge?: boolean;
+  detail: ClassDetail;
 };
 
 export type Testimonial = {
@@ -186,7 +206,38 @@ export const classes: ClassOffering[] = [
     status: "Open",
     priceBadge: "$20",
     summary:
-      "Private sessions in person or online, tailored from sub-90 seconds through sub-20 second goals. Most learners need about 4–6 classes to learn the cube."
+      "Private sessions in person or online, tailored from sub-90 seconds through sub-20 second goals. Most learners need about 4–6 classes to learn the cube.",
+    detail: {
+      overview:
+        "One-on-one Rubik's Cube coaching built around your current speed and goals. Sessions are structured, practical, and paced for you — whether you are solving for the first time or pushing toward faster times.",
+      sessionLength: "45 minutes per session",
+      delivery: "In person or online",
+      pricingDetail: "$20 per session",
+      showHeaderPrice: false,
+      showHeaderStatus: false,
+      timelineNote: "Most learners need about 4-6 sessions to reach their speed goal.",
+      sections: [
+        {
+          title: "What you get",
+          items: [
+            "Private coaching with feedback on every step",
+            "A clear path from first solve through faster methods",
+            "Homework-style practice goals between sessions",
+            "Flexible pacing based on your progress"
+          ]
+        },
+        {
+          title: "Speed tracks and methods",
+          items: [
+            "Sub 90 seconds — beginner's method (layer-by-layer)",
+            "Sub 60 seconds — optimized layer-by-layer (efficient cross and first two layers)",
+            "Sub 45 seconds — 2-look OLL and 2-look PLL with finger tricks",
+            "Sub 30 seconds — intuitive F2L",
+            "Sub 20 seconds — full CFOP (cross, F2L, OLL, and PLL)"
+          ]
+        }
+      ]
+    }
   },
   {
     title: "Rubik's Cubing (Group)",
@@ -197,7 +248,39 @@ export const classes: ClassOffering[] = [
     status: "Open",
     priceBadge: "$10",
     summary:
-      "In-person group sessions with step-by-step progression from sub-90 through sub-20 second tracks. Most learners need about 4–6 classes to learn the cube."
+      "In-person group sessions with step-by-step progression from sub-90 through sub-20 second tracks. Most learners need about 4–6 classes to learn the cube.",
+    detail: {
+      overview:
+        "Small in-person group classes for learners who want structure, community, and steady progress on the Rubik's Cube. Each session builds on the last with clear demonstrations and guided practice.",
+      sessionLength: "45 minutes per session",
+      delivery: "In person only",
+      groupSize: "5–8 students",
+      pricingDetail: "$10 per session",
+      showHeaderPrice: false,
+      showHeaderStatus: false,
+      timelineNote: "Most learners need about 4-6 sessions to reach their speed goal.",
+      sections: [
+        {
+          title: "What you get",
+          items: [
+            "Step-by-step instruction in a small group setting",
+            "Shared practice with peers at a similar stage",
+            "Structured progression through speed tracks",
+            "Hands-on help during every session"
+          ]
+        },
+        {
+          title: "Speed tracks and methods",
+          items: [
+            "Sub 90 seconds — beginner's method (layer-by-layer)",
+            "Sub 60 seconds — optimized layer-by-layer (efficient cross and first two layers)",
+            "Sub 45 seconds — 2-look OLL and 2-look PLL with finger tricks",
+            "Sub 30 seconds — intuitive F2L",
+            "Sub 20 seconds — full CFOP (cross, F2L, OLL, and PLL)"
+          ]
+        }
+      ]
+    }
   },
   {
     title: "Python Fundamentals",
@@ -209,7 +292,37 @@ export const classes: ClassOffering[] = [
     status: "Open",
     priceBadge: "$25",
     summary:
-      "Private Python mentoring in person or online for students who want individualized pacing and targeted support."
+      "Private Python mentoring in person or online for students who want individualized pacing and targeted support.",
+    detail: {
+      overview:
+        "Private Python fundamentals coaching for students who want focused help building real coding skills. Lessons adapt to your pace, questions, and projects.",
+      sessionLength: "45 minutes per session",
+      delivery: "In person or online",
+      pricingDetail: "$25 per session",
+      sections: [
+        {
+          title: "What you get",
+          items: [
+            "One-on-one instruction tailored to your level",
+            "Clear explanations with live coding examples",
+            "Practice problems matched to what you just learned",
+            "Guidance on debugging and reading error messages"
+          ]
+        },
+        {
+          title: "Topics covered",
+          items: [
+            "Python basics and how to run programs",
+            "Variables, data types, and input/output",
+            "Conditionals and loops",
+            "Functions and organizing code",
+            "Basic data structures",
+            "Classes and introductory object-oriented ideas",
+            "Small projects that combine multiple concepts"
+          ]
+        }
+      ]
+    }
   },
   {
     title: "Python Fundamentals (Group)",
@@ -220,7 +333,38 @@ export const classes: ClassOffering[] = [
     status: "Open",
     priceBadge: "$15",
     summary:
-      "In-person group class covering Python basics: variables, loops, conditionals, functions, classes, and practical coding foundations."
+      "In-person group class covering Python basics: variables, loops, conditionals, functions, classes, and practical coding foundations.",
+    detail: {
+      overview:
+        "A beginner-friendly in-person group class for learning Python from the ground up. Sessions combine short explanations, live coding, and hands-on exercises so concepts stick.",
+      sessionLength: "45 minutes per session",
+      delivery: "In person only",
+      groupSize: "5–8 students",
+      pricingDetail: "$15 per session",
+      sections: [
+        {
+          title: "What you get",
+          items: [
+            "Structured weekly-style progression in a small group",
+            "In-class coding exercises with instructor support",
+            "A foundation for school projects and future CS classes",
+            "Peer learning in a focused classroom setting"
+          ]
+        },
+        {
+          title: "Topics covered",
+          items: [
+            "Python basics and how to run programs",
+            "Variables, data types, and input/output",
+            "Conditionals and loops",
+            "Functions and organizing code",
+            "Basic data structures",
+            "Classes and introductory object-oriented ideas",
+            "Small projects that combine multiple concepts"
+          ]
+        }
+      ]
+    }
   },
   {
     title: "Data Structures and Algorithms",
@@ -229,7 +373,34 @@ export const classes: ClassOffering[] = [
     format: "Group",
     level: "Intermediate",
     status: "Coming Soon",
-    summary: "Upcoming track focused on DSA fundamentals and problem-solving skills for competitive programming."
+    summary: "Upcoming track focused on DSA fundamentals and problem-solving skills for competitive programming.",
+    detail: {
+      overview:
+        "An upcoming group track for students ready to move beyond syntax into data structures, algorithms, and competitive programming-style problem solving. Full syllabus and schedule will be posted before registration opens.",
+      sessionLength: "45 minutes per session (planned)",
+      delivery: "Format and location to be announced",
+      groupSize: "Small group (planned)",
+      pricingDetail: "Pricing to be announced",
+      sections: [
+        {
+          title: "Planned focus areas",
+          items: [
+            "Core data structures — arrays, stacks, queues, trees, and graphs",
+            "Algorithm patterns and time complexity basics",
+            "Problem decomposition and implementation practice",
+            "Preparation for contests such as USACO"
+          ]
+        },
+        {
+          title: "Who this is for",
+          items: [
+            "Students comfortable with at least one programming language",
+            "Learners preparing for CS competitions or advanced coursework",
+            "Anyone who wants stronger analytical coding skills"
+          ]
+        }
+      ]
+    }
   },
   {
     title: "Introduction to C++",
@@ -238,9 +409,41 @@ export const classes: ClassOffering[] = [
     format: "Group",
     level: "Beginner",
     status: "Coming Soon",
-    summary: "Upcoming beginner-friendly C++ class for syntax, core concepts, and coding fundamentals."
+    summary: "Upcoming beginner-friendly C++ class for syntax, core concepts, and coding fundamentals.",
+    detail: {
+      overview:
+        "An upcoming beginner group class for learning C++ syntax, core programming concepts, and the habits needed for more advanced computer science work. Details will be posted before registration opens.",
+      sessionLength: "45 minutes per session (planned)",
+      delivery: "Format and location to be announced",
+      groupSize: "Small group (planned)",
+      pricingDetail: "Pricing to be announced",
+      sections: [
+        {
+          title: "Planned focus areas",
+          items: [
+            "C++ syntax and program structure",
+            "Variables, types, conditionals, and loops",
+            "Functions and basic code organization",
+            "Introductory memory and debugging concepts",
+            "Practice problems that build toward DSA topics"
+          ]
+        },
+        {
+          title: "Who this is for",
+          items: [
+            "Beginners who want a strong typed-language foundation",
+            "Python learners ready to add C++ to their toolkit",
+            "Students preparing for advanced CS or competition tracks"
+          ]
+        }
+      ]
+    }
   }
 ];
+
+export function getClassBySlug(slug: string): ClassOffering | undefined {
+  return classes.find((classItem) => classItem.slug === slug);
+}
 
 export const testimonials: Testimonial[] = [];
 
