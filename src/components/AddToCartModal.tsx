@@ -13,7 +13,8 @@ import {
 } from "@/context/CartContext";
 import {
   formatRemainingSlots,
-  formatSlotTimeLocal
+  formatSlotTimeLocal,
+  getBrowserTimeZone
 } from "@/lib/formatSlotTime";
 import { FormSelect } from "@/components/FormSelect";
 
@@ -116,6 +117,8 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
       delivery,
       audience,
       timeSlotId: selectedSlot.id,
+      startsAt: selectedSlot.startsAt,
+      timeZone: getBrowserTimeZone(),
       timeLabel: formatSlotTimeLocal(selectedSlot.startsAt)
     });
   };

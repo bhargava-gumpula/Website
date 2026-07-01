@@ -50,7 +50,8 @@ export function CartSidePanel() {
             classSlug: item.classSlug,
             delivery: item.delivery,
             audience: item.audience,
-            timeSlotId: item.timeSlotId
+            timeSlotId: item.timeSlotId,
+            timeZone: item.timeZone
           }))
         })
       });

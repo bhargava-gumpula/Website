@@ -1,5 +1,6 @@
 import type { CartAudience, CartDelivery } from "@/lib/cartTypes";
-import type { StoredOrder } from "@/lib/orders";
+import { formatSlotTimeLocal } from "@/lib/formatSlotTime";
+import type { OrderLineItem, StoredOrder } from "@/lib/orders";
 import {
   createMailTransporter,
   getNotifyEmail,
@@ -25,6 +26,14 @@ function formatTotal(cents: number): string {
   return `$${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
 }
 
+function formatSessionTime(item: OrderLineItem): string {
+  if (item.startsAt) {
+    return formatSlotTimeLocal(item.startsAt, item.timeZone);
+  }
+
+  return item.timeLabel;
+}
+
 function buildCustomerBody(params: OrderEmailParams): string {
   const { order, customerName } = params;
   const lines = [
@@ -40,7 +49,7 @@ function buildCustomerBody(params: OrderEmailParams): string {
     lines.push(
       `- ${item.title}`,
       `  ${formatDelivery(item.delivery)} · ${formatAudience(item.audience)}`,
-      `  ${item.timeLabel} · ${item.priceLabel}`,
+      `  ${formatSessionTime(item)} · ${item.priceLabel}`,
       ""
     );
   }
@@ -78,7 +87,7 @@ function buildAdminBody(params: OrderEmailParams): string {
       "",
       `- ${item.title}`,
       `  ${formatDelivery(item.delivery)} · ${formatAudience(item.audience)}`,
-      `  ${item.timeLabel} · ${item.priceLabel}`
+      `  ${formatSessionTime(item)} · ${item.priceLabel}`
     );
   }
 

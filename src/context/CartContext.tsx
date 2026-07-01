@@ -16,6 +16,8 @@ export type CartItem = {
   audience: CartAudience;
   timeSlotId: string;
   timeLabel: string;
+  startsAt?: string;
+  timeZone?: string;
 };
 
 type CartContextValue = {

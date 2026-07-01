@@ -6,4 +6,5 @@ export type CheckoutItemPayload = {
   delivery: CartDelivery;
   audience: CartAudience;
   timeSlotId: string;
+  timeZone?: string;
 };

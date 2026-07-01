@@ -40,7 +40,8 @@ export async function POST(request: Request) {
       payment_intent_data: {
         metadata: {
           orderId: pendingOrder.id
-        }
+        },
+        statement_descriptor_suffix: "BHARGAVA GUM"
       }
     });
 

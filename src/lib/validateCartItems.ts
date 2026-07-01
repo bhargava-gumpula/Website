@@ -82,7 +82,12 @@ async function validateSingleItem(
       delivery: payload.delivery,
       audience: payload.audience,
       timeSlotId: slotResult.slot.id,
-      timeLabel: formatSlotTimeLocal(slotResult.slot.startsAt),
+      startsAt: slotResult.slot.startsAt,
+      timeZone: payload.timeZone?.trim() || undefined,
+      timeLabel: formatSlotTimeLocal(
+        slotResult.slot.startsAt,
+        payload.timeZone?.trim() || undefined
+      ),
       stripePriceId
     }
   };

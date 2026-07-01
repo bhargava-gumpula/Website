@@ -11,6 +11,8 @@ export type OrderLineItem = {
   audience: CartAudience;
   timeSlotId: string;
   timeLabel: string;
+  startsAt?: string;
+  timeZone?: string;
   stripePriceId: string;
 };
 
