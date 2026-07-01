@@ -93,3 +93,29 @@ a {
   box-shadow: 0 12px 32px rgb(0 0 0 / 0.4);
   border-color: var(--color-brand-200);
 }
+
+@keyframes promo-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.promo-marquee-track {
+  animation: promo-marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-marquee-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .promo-marquee-content:last-child {
+    display: none;
+  }
+}

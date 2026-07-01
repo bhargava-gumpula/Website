@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { CartShell } from "@/components/CartShell";
 import { Navbar } from "@/components/Navbar";
+import { PromoBanner } from "@/components/PromoBanner";
 import { siteIdentity } from "@/data/siteContent";
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="font-sans antialiased">
         <CartShell>
           <div className="flex min-h-screen flex-col">
+            <PromoBanner />
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
