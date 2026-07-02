@@ -88,14 +88,9 @@ export default async function ClassDetailPage({ params }: ClassDetailPageProps) 
 
       <article className="rounded-xl border border-slate-700/70 bg-slate-900 p-5 shadow-soft">
         <div
-          className={`grid grid-cols-1 gap-5 sm:gap-6 ${isGroupClass ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}
+          className={`grid grid-cols-1 gap-5 sm:gap-6 ${isGroupClass ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Session length</p>
-            <p className="mt-2 text-sm font-medium text-slate-100">{detail.sessionLength}</p>
-          </div>
-
-          <div className={detailColumnClass}>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Price</p>
             <p className="mt-2 text-sm font-medium text-slate-100">{detail.pricingDetail}</p>
           </div>
