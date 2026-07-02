@@ -56,3 +56,16 @@ export function getSiteUrl(request: Request): string {
 
   return "http://localhost:3000";
 }
+
+export function getCheckoutSessionCustomerName(session: Stripe.Checkout.Session): string {
+  const details = session.customer_details;
+  const collected = session.collected_information;
+
+  const name =
+    details?.individual_name?.trim() ||
+    details?.name?.trim() ||
+    collected?.individual_name?.trim() ||
+    "";
+
+  return name || "Customer";
+}

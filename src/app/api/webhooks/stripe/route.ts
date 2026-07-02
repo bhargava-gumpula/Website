@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { markSlotsBookedIfFull } from "@/lib/calendarSlots";
 import { findOrderById, markOrderExpired, markOrderPaid } from "@/lib/orders";
 import { sendOrderConfirmationEmails } from "@/lib/sendOrderConfirmation";
-import { getStripe } from "@/lib/stripe";
+import { getStripe, getCheckoutSessionCustomerName } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
         if (existing?.status !== "paid") {
           const customerEmail =
             session.customer_details?.email ?? session.customer_email ?? undefined;
-          const customerName = session.customer_details?.name?.trim() || "Customer";
+          const customerName = getCheckoutSessionCustomerName(session);
 
           const order = await markOrderPaid({
             orderId,
