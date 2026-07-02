@@ -29,6 +29,7 @@ export async function POST(request: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       allow_promotion_codes: true,
+      billing_address_collection: "required",
       line_items: validation.items.map((item) => ({
         price: item.stripePriceId,
         quantity: 1
