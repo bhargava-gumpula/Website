@@ -9,6 +9,7 @@ import { resolveCalendarSlot } from "@/lib/calendarSlots";
 import { formatSlotTimeLocal } from "@/lib/formatSlotTime";
 import type { OrderLineItem } from "@/lib/orders";
 import { getStripePriceIdForSlug } from "@/lib/stripe";
+import { getClassPriceBadgeDisplay } from "@/lib/promoPricing";
 
 const openClassesBySlug = new Map(
   classes.filter((classItem) => classItem.status === "Open").map((classItem) => [classItem.slug, classItem])
@@ -78,7 +79,7 @@ async function validateSingleItem(
       classSlug: classItem.slug,
       title: getClassRegistrationTitle(classItem),
       priceCents,
-      priceLabel: classItem.priceBadge,
+      priceLabel: getClassPriceBadgeDisplay(classItem) ?? classItem.priceBadge,
       delivery: payload.delivery,
       audience: payload.audience,
       timeSlotId: slotResult.slot.id,

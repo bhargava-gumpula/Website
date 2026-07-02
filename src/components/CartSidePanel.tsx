@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { classes, promoBanner } from "@/data/siteContent";
+import { isGroupClassFreePromoActive } from "@/lib/isPromoActive";
 import {
   formatCartAudience,
   formatCartDelivery,
@@ -28,12 +30,18 @@ function CartIcon({ className }: { className?: string }) {
   );
 }
 
+const groupClassSlugs = new Set(
+  classes.filter((classItem) => classItem.format === "Group").map((classItem) => classItem.slug)
+);
+
 export function CartSidePanel() {
   const { items, itemCount, totalCents, isOpen, isHydrated, closeCart, removeItem } = useCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const canCheckout = isHydrated && items.length > 0 && !isCheckingOut;
+  const showPromoNote =
+    isGroupClassFreePromoActive() && items.some((item) => groupClassSlugs.has(item.classSlug));
 
   async function handleCheckout() {
     if (!canCheckout) return;
@@ -162,6 +170,9 @@ export function CartSidePanel() {
             <p className="mb-3 text-center text-xs text-rose-300" role="alert">
               {checkoutError}
             </p>
+          ) : null}
+          {showPromoNote ? (
+            <p className="mb-3 text-center text-xs leading-relaxed text-slate-400">{promoBanner.modalNote}</p>
           ) : null}
           <button
             type="button"

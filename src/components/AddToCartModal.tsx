@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {
   getClassRegistrationTitle,
   parsePriceBadgeToCents,
+  promoBanner,
   type ClassOffering
 } from "@/data/siteContent";
 import {
@@ -18,6 +19,8 @@ import {
   getBrowserTimeZone
 } from "@/lib/formatSlotTime";
 import { FormSelect } from "@/components/FormSelect";
+import { getClassPriceBadgeDisplay } from "@/lib/promoPricing";
+import { isGroupClassFreePromoActive } from "@/lib/isPromoActive";
 
 type CalendarSlot = {
   id: string;
@@ -36,6 +39,7 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
   const { addItem } = useCart();
   const isGroup = classItem.format === "Group";
   const displayTitle = getClassRegistrationTitle(classItem);
+  const displayPriceBadge = getClassPriceBadgeDisplay(classItem);
 
   const [delivery, setDelivery] = useState<CartDelivery>("in-person");
   const [audience, setAudience] = useState<CartAudience | "">("");
@@ -114,7 +118,7 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
       classSlug: classItem.slug,
       title: displayTitle,
       priceCents: parsePriceBadgeToCents(classItem.priceBadge),
-      priceLabel: classItem.priceBadge,
+      priceLabel: displayPriceBadge ?? classItem.priceBadge,
       delivery,
       audience,
       timeSlotId: selectedSlot.id,
@@ -145,8 +149,11 @@ export function AddToCartModal({ classItem, onClose }: AddToCartModalProps) {
             <h2 id="add-to-cart-title" className="mt-1 text-lg font-semibold text-slate-100">
               {displayTitle}
             </h2>
-            {classItem.priceBadge ? (
-              <p className="mt-1 text-sm text-brand-300">{classItem.priceBadge} per session</p>
+            {displayPriceBadge ? (
+              <p className="mt-1 text-sm text-brand-300">{displayPriceBadge} per session</p>
+            ) : null}
+            {isGroup && isGroupClassFreePromoActive() ? (
+              <p className="mt-2 text-xs leading-relaxed text-slate-400">{promoBanner.modalNote}</p>
             ) : null}
           </div>
           <button

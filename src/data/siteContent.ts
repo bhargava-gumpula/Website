@@ -82,9 +82,12 @@ export const siteIdentity = {
 
 export const promoBanner = {
   code: "SUMMER100",
-  /** Last day the banner is shown (inclusive), America/Los_Angeles */
-  expiresOn: "2026-07-16",
-  message: "Use code SUMMER100 at checkout for 100% off group classes · Expires July 16"
+  /** Last day the promo is shown (inclusive), America/Los_Angeles */
+  expiresOn: "2026-07-17",
+  /** Last day group classes show "Free" pricing (inclusive), America/Los_Angeles */
+  groupFreePriceUntil: "2026-07-17",
+  message: "Use code SUMMER100 at checkout for 100% off group classes · Expires July 17",
+  modalNote: "Use discount code SUMMER100 at checkout for 100% off. Offer ends July 17."
 };
 
 export const externalLinks = {

@@ -12,3 +12,7 @@ function getPacificDateString(date: Date): string {
 export function isPromoActive(now = new Date()): boolean {
   return getPacificDateString(now) <= promoBanner.expiresOn;
 }
+
+export function isGroupClassFreePromoActive(now = new Date()): boolean {
+  return getPacificDateString(now) <= promoBanner.groupFreePriceUntil;
+}

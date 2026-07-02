@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ClassOffering } from "@/data/siteContent";
 import { getClassRegistrationTitle } from "@/data/siteContent";
 import { useCart } from "@/context/CartContext";
+import { getClassPriceBadgeDisplay } from "@/lib/promoPricing";
 
 type ClassCardProps = {
   classItem: ClassOffering;
@@ -13,6 +14,7 @@ export function ClassCard({ classItem }: ClassCardProps) {
   const { openAddModal } = useCart();
   const isComingSoon = classItem.status === "Coming Soon";
   const displayTitle = getClassRegistrationTitle(classItem);
+  const priceBadge = getClassPriceBadgeDisplay(classItem);
 
   return (
     <article className="group hover-lift relative flex h-full flex-col rounded-xl border border-slate-700/70 bg-slate-900 p-5 shadow-soft">
@@ -35,12 +37,12 @@ export function ClassCard({ classItem }: ClassCardProps) {
           )}
         </h3>
         <div className="flex shrink-0 items-center gap-1.5">
-          {!isComingSoon && classItem.priceBadge && classItem.showPriceBadge !== false ? (
+          {!isComingSoon && priceBadge && classItem.showPriceBadge !== false ? (
             <span
               className="whitespace-nowrap rounded-full bg-brand-500/20 px-2.5 py-1 text-xs font-bold text-brand-300 ring-1 ring-brand-400/40"
-              aria-label={`Price ${classItem.priceBadge}`}
+              aria-label={`Price ${priceBadge}`}
             >
-              {classItem.priceBadge}
+              {priceBadge}
             </span>
           ) : null}
           {classItem.showStatusBadge !== false ? (

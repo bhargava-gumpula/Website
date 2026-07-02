@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ClassDetailActions } from "@/components/ClassDetailActions";
+import { ClassPriceBadge, ClassPricingDetail } from "@/components/PromoClassPrice";
 import { SectionHeader } from "@/components/SectionHeader";
 import { classes, getClassBySlug, getClassRegistrationTitle } from "@/data/siteContent";
 
@@ -69,9 +70,10 @@ export default async function ClassDetailPage({ params }: ClassDetailPageProps) 
           {classItem.level}
         </span>
         {showHeaderPrice ? (
-          <span className="rounded-full bg-brand-500/20 px-3 py-1 text-xs font-bold text-brand-300 ring-1 ring-brand-400/40">
-            {classItem.priceBadge} per session
-          </span>
+          <ClassPriceBadge
+            classItem={classItem}
+            className="rounded-full bg-brand-500/20 px-3 py-1 text-xs font-bold text-brand-300 ring-1 ring-brand-400/40"
+          />
         ) : null}
         {showHeaderStatus ? (
           <span
@@ -92,7 +94,7 @@ export default async function ClassDetailPage({ params }: ClassDetailPageProps) 
         >
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Price</p>
-            <p className="mt-2 text-sm font-medium text-slate-100">{detail.pricingDetail}</p>
+            <ClassPricingDetail classItem={classItem} className="mt-2 text-sm font-medium text-slate-100" />
           </div>
 
           {isGroupClass ? (
