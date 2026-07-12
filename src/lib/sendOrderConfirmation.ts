@@ -1,5 +1,5 @@
 import type { CartAudience, CartDelivery } from "@/lib/cartTypes";
-import { classVenueInPersonLine, classVenueOnlineLine } from "@/data/siteContent";
+import { classVenueInPersonLine, classVenueOnlineLine, getClassBySlug } from "@/data/siteContent";
 import { formatSlotTimeLocal } from "@/lib/formatSlotTime";
 import type { OrderLineItem, StoredOrder } from "@/lib/orders";
 import {
@@ -39,6 +39,28 @@ function formatSessionTime(item: OrderLineItem): string {
   return item.timeLabel;
 }
 
+function buildWhatToBringLines(items: OrderLineItem[]): string[] {
+  const categories = new Set(
+    items.map((item) => getClassBySlug(item.classSlug)?.category).filter(Boolean)
+  );
+
+  const notes: string[] = [];
+
+  if (categories.has("Rubik's Cubing")) {
+    notes.push("Please bring your own Rubik's Cube to class.");
+  }
+
+  if (categories.has("Python")) {
+    notes.push("Please bring a laptop or computer to class.");
+  }
+
+  if (notes.length === 0) {
+    return [];
+  }
+
+  return ["", "What to bring:", ...notes.map((note) => `- ${note}`)];
+}
+
 function buildCustomerBody(params: OrderEmailParams): string {
   const { order, customerName } = params;
   const lines = [
@@ -60,7 +82,7 @@ function buildCustomerBody(params: OrderEmailParams): string {
     );
   }
 
-  lines.push(`Total: ${formatTotal(order.totalCents)}`, "", "I will follow up with any next steps before your session.");
+  lines.push(`Total: ${formatTotal(order.totalCents)}`, ...buildWhatToBringLines(order.items), "", "I will follow up with any next steps before your session.");
 
   if (order.id) {
     lines.push("", `Reference: ${order.id}`);

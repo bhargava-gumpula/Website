@@ -100,11 +100,11 @@ export const externalLinks = {
 export const highlights: HomeStat[] = [
   { label: "Projects", value: 2, suffix: "+" },
   { label: "Competitions", value: 8, suffix: "+" },
-  { label: "Certifications", value: 3, suffix: "" }
+  { label: "Certifications", value: 4, suffix: "" }
 ];
 
 export const profileMetrics = {
-  fastest3x3Seconds: 7.8,
+  fastest3x3Seconds: 6.9,
   average3x3Seconds: 11,
   competitions: 8
 };
@@ -142,7 +142,7 @@ export const aboutContent = {
     "I combine technical problem-solving, USACO experience, competitive cubing, and practical teaching to help learners grow with confidence.",
   bioParagraphs: [
     "I am Bhargava Gumpula, a computer science learner and builder who enjoys creating real, useful projects. My strongest languages are Python, C, and C++. I am well-versed in data structures and algorithms, and I also work with SQL, HTML, CSS, JavaScript, and Flask.",
-    "In cubing, I actively compete and continue improving through regular practice and events. My fastest 3x3 solve is 7.8 seconds, and my average is around 11 seconds. I also solve many puzzle types beyond 3x3, including 2x2, 4x4, 5x5, Pyraminx, Skewb, Megaminx, and more.",
+    "In cubing, I actively compete and continue improving through regular practice and events. My fastest 3x3 solve is 6.9 seconds, and my average is around 11 seconds. I also solve many puzzle types beyond 3x3, including 2x2, 4x4, 5x5, Pyraminx, Skewb, Megaminx, and more.",
     "On this website, I share projects, teach Rubik's Cube and programming classes, and build a long-term learning community."
   ],
   profilePlaceholderText: "Profile image area. Replace with your personal photo when ready.",
@@ -175,9 +175,13 @@ export const aboutContent = {
       label: "Codio C++ certification completed",
       certificateUrl: "/certificates/codio-cpp-certificate.pdf"
     },
+    {
+      label: "AlphaStar USACO Bronze Mastery",
+      certificateUrl: "/certificates/alphastar-usaco-bronze-mastery.pdf"
+    },
     { label: "USACO Bronze level participant" },
     { label: "8+ cubing competitions and counting" },
-    { label: "Fastest 3x3 solve: 7.8 seconds" }
+    { label: "Fastest 3x3 solve: 6.9 seconds" }
   ] satisfies Achievement[]
 };
 
