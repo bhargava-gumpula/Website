@@ -30,7 +30,7 @@ export type ClassDetail = {
   showHeaderStatus?: boolean;
 };
 
-export const classVenueName = "Evergreen Branch Library";
+export const classVenueName = "Village Square Branch Library";
 export const classVenueInPersonLine = `In person at ${classVenueName}`;
 export const classVenueOnlineLine = "Online (video call)";
 export const inPersonClassLocation: ClassLocation = { inPerson: classVenueInPersonLine };
