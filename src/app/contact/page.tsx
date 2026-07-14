@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeader } from "@/components/SectionHeader";
-import { contactPageContent } from "@/data/siteContent";
+import { contactPageContent, externalLinks } from "@/data/siteContent";
 
 export default function ContactPage() {
   return (
@@ -11,6 +11,13 @@ export default function ContactPage() {
         description={contactPageContent.description}
       />
       <ContactForm />
+      <p className="text-center text-base text-slate-300 md:text-lg">
+        Prefer to talk? Call me at{" "}
+        <a href={`tel:${externalLinks.phone}`} className="font-medium text-brand-400 hover:text-brand-300">
+          {externalLinks.phoneDisplay}
+        </a>
+        .
+      </p>
     </div>
   );
 }

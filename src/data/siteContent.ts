@@ -94,7 +94,9 @@ export const externalLinks = {
   github: "https://github.com/bhargava-gumpula",
   linkedin: "https://www.linkedin.com/in/bhargava-gumpula-5000b9300/",
   wca: "https://www.worldcubeassociation.org/persons/2019GUMP01",
-  youtube: "https://www.youtube.com/@BhargavaGumpula"
+  youtube: "https://www.youtube.com/@BhargavaGumpula",
+  phone: "4089305481",
+  phoneDisplay: "(408) 930-5481"
 };
 
 export const highlights: HomeStat[] = [

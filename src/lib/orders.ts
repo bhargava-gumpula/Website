@@ -24,6 +24,7 @@ export type StoredOrder = {
   status: OrderStatus;
   stripeSessionId?: string;
   customerEmail?: string;
+  customerPhone?: string;
   totalCents: number;
   items: OrderLineItem[];
   paidAt?: string;
@@ -115,6 +116,7 @@ export async function markOrderPaid(params: {
   orderId: string;
   stripeSessionId: string;
   customerEmail?: string;
+  customerPhone?: string;
 }): Promise<StoredOrder | null> {
   const orders = await loadOrders();
   const index = orders.findIndex((order) => order.id === params.orderId);
@@ -134,6 +136,7 @@ export async function markOrderPaid(params: {
     status: "paid",
     stripeSessionId: params.stripeSessionId,
     customerEmail: params.customerEmail,
+    customerPhone: params.customerPhone,
     paidAt: new Date().toISOString()
   };
 

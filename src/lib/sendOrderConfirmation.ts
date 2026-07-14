@@ -94,12 +94,14 @@ function buildCustomerBody(params: OrderEmailParams): string {
 function buildAdminBody(params: OrderEmailParams): string {
   const { order, customerName } = params;
   const email = order.customerEmail ?? "(no email)";
+  const phone = order.customerPhone?.trim() || "(no phone)";
 
   const lines = [
     "New class registration (paid)",
     "",
     `Name: ${customerName}`,
     `Email: ${email}`,
+    `Phone: ${phone}`,
     `Total: ${formatTotal(order.totalCents)}`,
     `Order ID: ${order.id}`
   ];

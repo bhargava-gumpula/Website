@@ -34,6 +34,9 @@ export async function POST(request: Request) {
           enabled: true
         }
       },
+      phone_number_collection: {
+        enabled: true
+      },
       line_items: validation.items.map((item) => ({
         price: item.stripePriceId,
         quantity: 1

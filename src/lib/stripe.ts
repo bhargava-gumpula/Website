@@ -69,3 +69,8 @@ export function getCheckoutSessionCustomerName(session: Stripe.Checkout.Session)
 
   return name || "Customer";
 }
+
+export function getCheckoutSessionCustomerPhone(session: Stripe.Checkout.Session): string | undefined {
+  const phone = session.customer_details?.phone?.trim();
+  return phone || undefined;
+}

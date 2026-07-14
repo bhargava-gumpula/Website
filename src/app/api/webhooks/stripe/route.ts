@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { markSlotsBookedIfFull } from "@/lib/calendarSlots";
 import { findOrderById, markOrderExpired, markOrderPaid } from "@/lib/orders";
 import { sendOrderConfirmationEmails } from "@/lib/sendOrderConfirmation";
-import { getStripe, getCheckoutSessionCustomerName } from "@/lib/stripe";
+import { getStripe, getCheckoutSessionCustomerName, getCheckoutSessionCustomerPhone } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -44,11 +44,13 @@ export async function POST(request: Request) {
           const customerEmail =
             session.customer_details?.email ?? session.customer_email ?? undefined;
           const customerName = getCheckoutSessionCustomerName(session);
+          const customerPhone = getCheckoutSessionCustomerPhone(session);
 
           const order = await markOrderPaid({
             orderId,
             stripeSessionId: session.id,
-            customerEmail
+            customerEmail,
+            customerPhone
           });
 
           if (order) {
