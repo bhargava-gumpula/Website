@@ -57,12 +57,6 @@ export type ClassOffering = {
   detail: ClassDetail;
 };
 
-export type Testimonial = {
-  name: string;
-  highlight: string;
-  text: string;
-};
-
 export type HomeStat = {
   label: string;
   value: number;
@@ -133,7 +127,7 @@ export const homeContent = {
   testimonialsSection: {
     eyebrow: "Testimonials",
     title: "What learners say",
-    description: "Testimonials are coming soon."
+    description: "Experiences shared by students and families from my classes."
   }
 };
 
@@ -480,8 +474,6 @@ export const classes: ClassOffering[] = [
 export function getClassBySlug(slug: string): ClassOffering | undefined {
   return classes.find((classItem) => classItem.slug === slug);
 }
-
-export const testimonials: Testimonial[] = [];
 
 export function getClassRegistrationTitle(classItem: ClassOffering): string {
   return classItem.titleSubline ? `${classItem.title} ${classItem.titleSubline}` : classItem.title;

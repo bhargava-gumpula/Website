@@ -21,6 +21,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# runtime submissions (private)
+data/testimonials.json
+data/testimonials.json.tmp
+
 # typescript
 *.tsbuildinfo
 

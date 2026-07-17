@@ -5,7 +5,7 @@ Owner: Bhargava Gumpula
 
 This file is the single reference for class offerings, pricing, syllabus content, locations, promotions, and planned class-related website features. Use it when updating the live site (`src/data/siteContent.ts`) or building new class pages.
 
-**Related docs:** `WEBSITE_REQUIREMENTS.md`, `CONTENT_EDITING_GUIDE.md`, `PHASE_1_IMPLEMENTATION_PLAN.md`, `NEXT_STEPS.md`
+**Related docs:** `WEBSITE_REQUIREMENTS.md`, `CONTENT_EDITING_GUIDE.md`, `PHASE_1_IMPLEMENTATION_PLAN.md`, `TODO.md`
 
 ---
 
@@ -184,25 +184,12 @@ Calendar will show separate slots (e.g. "Rubik's group (young)" vs "Rubik's grou
 
 ---
 
-## Operations and Service Hours
+## Operations / content checklist
 
-- [ ] Take pictures (classes, cubing, teaching)
-- [ ] Collect testimonials (student/parent quotes)
-- [ ] Send registration emails
+Open items moved to **[`TODO.md`](./TODO.md)** (photos, testimonials, syllabus gaps, etc.).
 
 ---
 
-## Content Gaps
-
-- [ ] Sub 60 seconds — Step 3 and full syllabus
-- [ ] Sub 30 seconds — curriculum outline
-- [ ] Rubik's Cube time distribution (first / second / third layer)
-- [ ] Python — full lesson plan, projects, and duration estimate
-- [ ] Class schedule (days, times, recurring vs one-off)
-- [ ] Summer promo code and terms
-- [ ] Payment provider choice (Stripe, etc.)
-
----
 
 ## Mapping to Live Site
 

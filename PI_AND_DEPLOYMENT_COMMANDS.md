@@ -188,6 +188,43 @@ cat ~/Work/Website/data/contact-submissions.json
 
 ---
 
+## Testimonial moderation
+
+Add these private values to `~/Work/Website/.env`:
+
+```text
+TESTIMONIALS_ADMIN_PASSWORD=choose-a-long-unique-password
+TESTIMONIALS_ADMIN_SESSION_SECRET=generate-with-openssl-rand-base64-32
+```
+
+Generate the session secret:
+
+```bash
+openssl rand -base64 32
+```
+
+After changing them, run:
+
+```bash
+pm2 restart website --update-env
+```
+
+Review submissions at:
+
+```text
+https://www.bhargava-gumpula.com/admin/testimonials
+```
+
+Private submissions are stored at:
+
+```text
+~/Work/Website/data/testimonials.json
+```
+
+Back up this file with the other runtime data. It is intentionally excluded from Git.
+
+---
+
 ## Reboot test
 
 ```bash

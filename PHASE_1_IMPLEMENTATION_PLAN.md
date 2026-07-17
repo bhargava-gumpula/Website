@@ -3,7 +3,7 @@
 Last updated: 2026-06-30  
 Owner: Bhargava Gumpula
 
-Phase 1 build plan, payments/cart, and Google Calendar scheduling. **Source-of-truth content:** `WEBSITE_REQUIREMENTS.md`, `CLASSES_INFORMATION.md`, `PERSONAL_DETAILS.md`. **How to edit:** `CONTENT_EDITING_GUIDE.md`. **Living checklist:** `NEXT_STEPS.md`. **Locked architecture (Phase 2+):** `DESIGN_ARCHITECTURE_BASELINE.md`. **Deploy:** `PI_AND_DEPLOYMENT_COMMANDS.md`.
+Phase 1 build plan, payments/cart, and Google Calendar scheduling. **Source-of-truth content:** `WEBSITE_REQUIREMENTS.md`, `CLASSES_INFORMATION.md`, `PERSONAL_DETAILS.md`. **How to edit:** `CONTENT_EDITING_GUIDE.md`. **Living checklist:** `TODO.md`. **Locked architecture (Phase 2+):** `DESIGN_ARCHITECTURE_BASELINE.md`. **Deploy:** `PI_AND_DEPLOYMENT_COMMANDS.md`.
 
 ---
 
@@ -184,7 +184,7 @@ Use the same names as `getClassRegistrationTitle()` in `siteContent.ts`:
 
 ### Implementation phases
 
-Track in `NEXT_STEPS.md` section D.
+Track in `TODO.md`.
 
 | Phase | What |
 |-------|------|
@@ -276,7 +276,7 @@ Summer free group classes with promo code — Stripe promo codes after checkout 
 
 ### Implementation phases
 
-Track detail in `NEXT_STEPS.md` section C.
+Track detail in `TODO.md`.
 
 | Phase | Status |
 |-------|--------|
@@ -339,7 +339,7 @@ From original requirements — implement in later phases:
 - Auth, restricted algorithms, blog, admin dashboard, AI chatbot
 - Class detail pages, calendar page with Evergreen Branch Library
 - Summer promo banner, membership
-- Security hardening (see `NEXT_STEPS.md` section G)
+- Security hardening (see `TODO.md`)
 
 ---
 
@@ -352,8 +352,10 @@ From original requirements — implement in later phases:
 - [x] Profile photo on Home/About
 - [x] Stripe checkout + webhook (test mode, local)
 - [x] Confirmation emails on purchase
-- [ ] Google Calendar slots (G1–G5)
-- [ ] Go live on Stripe (explicit approval)
+- [x] Google Calendar slots (G1–G5)
+- [x] Go live on Stripe (explicit approval)
+
+Open follow-ups: **[`TODO.md`](./TODO.md)**.
 
 ---
 
@@ -450,7 +452,7 @@ When G2–G3 are built, that event should appear in the Add modal with **1 slot 
 | `CLASSES_INFORMATION.md` | Class pricing, syllabus, locations |
 | `PERSONAL_DETAILS.md` | Links, skills, projects |
 | `CONTENT_EDITING_GUIDE.md` | How to edit `siteContent.ts` |
-| `NEXT_STEPS.md` | Living checklist — update when steps complete |
+| `TODO.md` | Living checklist — update when steps complete |
 | `DESIGN_ARCHITECTURE_BASELINE.md` | Locked stack & Phase 2+ plan |
 | `PI_AND_DEPLOYMENT_COMMANDS.md` | Pi deploy commands |
 | `NETWORKING_AND_TRAFFIC_FLOW.md` | How traffic reaches the Pi |

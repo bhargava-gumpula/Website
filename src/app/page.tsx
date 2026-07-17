@@ -3,7 +3,18 @@ import Link from "next/link";
 import { ClassCard } from "@/components/ClassCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeader } from "@/components/SectionHeader";
-import { classes, highlights, homeContent, projects } from "@/data/siteContent";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import {
+  classes,
+  getClassRegistrationTitle,
+  highlights,
+  homeContent,
+  projects,
+} from "@/data/siteContent";
+
+const testimonialClassOptions = [
+  ...new Set(classes.map((classItem) => getClassRegistrationTitle(classItem))),
+];
 
 export default function HomePage() {
   return (
@@ -84,6 +95,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      <TestimonialsSection
+        classOptions={testimonialClassOptions}
+        eyebrow={homeContent.testimonialsSection.eyebrow}
+        title={homeContent.testimonialsSection.title}
+        description={homeContent.testimonialsSection.description}
+      />
     </div>
   );
 }
